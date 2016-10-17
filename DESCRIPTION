@@ -9,6 +9,8 @@ Description: Functions for weight diagnostics and weighted summary statistics of
     generic importance sampling results.
 License: GPL (>= 2)
 Imports:
-    Rcpp (>= 0.12.7)
+    Rcpp (>= 0.12.7),
+    ggplot2,
+    gridExtra
 LinkingTo: Rcpp, RcppArmadillo
 RoxygenNote: 5.0.1
