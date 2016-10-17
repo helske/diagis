@@ -29,9 +29,7 @@ weighted_var(x_opt, w_opt)
 s_inf <- 0.25
 x_inf <- rnorm(1000, sd = s_inf)
 w_inf <- p(x_inf) / q(x_inf, s_inf)
-weighted_mean(x_inf, w_inf)
-weighted_var(x_inf, w_inf)
-weighted_mean(x_inf, w_inf) #hmm...
+weighted_mean(x_inf, w_inf) #!!
 weighted_var(x_inf, w_inf) #!!
 # diagnostic plots
 weight_plot(w_inf)

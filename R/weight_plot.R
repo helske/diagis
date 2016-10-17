@@ -4,7 +4,7 @@
 #' Plot of largest weights, sorted graph of all weights, running variance estimate of weights, 
 #' and running effective sample size estimate of weights.
 #' 
-#' @importFrom ggplot2 ggplot geom_point geom_line ggtitle scale_y_continuous aes
+#' @importFrom ggplot2 ggplot geom_point geom_line ggtitle scale_y_continuous aes aes_
 #' @importFrom gridExtra grid.arrange
 #' @param w Vector of weights
 #' @export
@@ -21,7 +21,7 @@
 weight_plot <- function(w){
   ind <- w > sort(w, decreasing = TRUE)[min(100, length(w))]
   dat <- data.frame(weight = w[ind], index = which(ind))
-  p1 <- ggplot(data = dat, aes(x = index, y = weight)) + geom_point() + 
+  p1 <- ggplot(data = dat, aes_(x = ~index, y = ~weight)) + geom_point() + 
     ggtitle(paste0(min(100, length(w)), " largest weights"))
   index <- seq_along(w)
   p2 <- ggplot(mapping = aes(x = index, y = sort(w))) + geom_point() + 
