@@ -25,3 +25,35 @@ arma_running_weighted_var <- function(x, w, ml) {
     .Call('diagis_arma_running_weighted_var', PACKAGE = 'diagis', x, w, ml)
 }
 
+arma_weighted_mean_mat <- function(x, w) {
+    .Call('diagis_arma_weighted_mean_mat', PACKAGE = 'diagis', x, w)
+}
+
+arma_weighted_var_mat2 <- function(x, w, ml) {
+    .Call('diagis_arma_weighted_var_mat2', PACKAGE = 'diagis', x, w, ml)
+}
+
+arma_weighted_var_mat3 <- function(x, w, ml) {
+    .Call('diagis_arma_weighted_var_mat3', PACKAGE = 'diagis', x, w, ml)
+}
+
+arma_weighted_mean_vec <- function(x, w) {
+    .Call('diagis_arma_weighted_mean_vec', PACKAGE = 'diagis', x, w)
+}
+
+arma_running_mean_vec <- function(x) {
+    .Call('diagis_arma_running_mean_vec', PACKAGE = 'diagis', x)
+}
+
+arma_running_weighted_mean_vec <- function(x, w) {
+    .Call('diagis_arma_running_weighted_mean_vec', PACKAGE = 'diagis', x, w)
+}
+
+arma_weighted_var_vec <- function(x, w, ml) {
+    .Call('diagis_arma_weighted_var_vec', PACKAGE = 'diagis', x, w, ml)
+}
+
+arma_weighted_var_vec_t <- function(x, w, ml) {
+    .Call('diagis_arma_weighted_var_vec_t', PACKAGE = 'diagis', x, w, ml)
+}
+
