@@ -91,29 +91,16 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// arma_weighted_var_mat2
-arma::cube arma_weighted_var_mat2(const arma::cube& x, const arma::vec& w, unsigned int ml);
-RcppExport SEXP diagis_arma_weighted_var_mat2(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
+// arma_weighted_var_mat
+arma::cube arma_weighted_var_mat(const arma::cube& x, const arma::vec& w, unsigned int ml);
+RcppExport SEXP diagis_arma_weighted_var_mat(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::cube& >::type x(xSEXP);
     Rcpp::traits::input_parameter< const arma::vec& >::type w(wSEXP);
     Rcpp::traits::input_parameter< unsigned int >::type ml(mlSEXP);
-    rcpp_result_gen = Rcpp::wrap(arma_weighted_var_mat2(x, w, ml));
-    return rcpp_result_gen;
-END_RCPP
-}
-// arma_weighted_var_mat3
-arma::cube arma_weighted_var_mat3(const arma::cube& x, const arma::vec& w, unsigned int ml);
-RcppExport SEXP diagis_arma_weighted_var_mat3(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::cube& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type w(wSEXP);
-    Rcpp::traits::input_parameter< unsigned int >::type ml(mlSEXP);
-    rcpp_result_gen = Rcpp::wrap(arma_weighted_var_mat3(x, w, ml));
+    rcpp_result_gen = Rcpp::wrap(arma_weighted_var_mat(x, w, ml));
     return rcpp_result_gen;
 END_RCPP
 }

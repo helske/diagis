@@ -4,7 +4,7 @@
 \alias{running_mean}
 \title{Compute running mean of a vector}
 \usage{
-running_mean(x, na.rm = FALSE)
+running_mean(x, na.rm)
 }
 \arguments{
 \item{x}{A numeric vector.}

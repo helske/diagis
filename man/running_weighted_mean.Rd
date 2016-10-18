@@ -4,12 +4,10 @@
 \alias{running_weighted_mean}
 \title{Compute running weighted mean of a vector}
 \usage{
-running_weighted_mean(x, w, na.rm = FALSE)
+running_weighted_mean(x, na.rm)
 }
 \arguments{
 \item{x}{A numeric vector.}
-
-\item{w}{A numeric vector of non-negative weights. Will be automatically normalized to sum to one.}
 
 \item{na.rm}{If \code{TRUE}, \code{NA} values in \code{x} (and corresponding weights in \code{w}) are
 omitted from the computation. Default is \code{FALSE}.}

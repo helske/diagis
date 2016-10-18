@@ -4,18 +4,17 @@
 \alias{weighted_var}
 \title{Compute a weighted variance of a vector}
 \usage{
-weighted_var(x, w, na.rm = FALSE, method = c("unbiased", "moment"))
+weighted_var(x, w, method, na.rm)
 }
 \arguments{
-\item{x}{A numeric vector.}
+\item{x}{A numeric vector, matrix or array.}
 
 \item{w}{A numeric vector of non-negative weights. Will be automatically normalized to sum to one.}
 
+\item{method}{Estimator type, either \code{"unbiased"} (default) or \code{"moment"}.}
+
 \item{na.rm}{If \code{TRUE}, \code{NA} values in \code{x} (and corresponding weights in \code{w}) are
 omitted from the computation. Default is \code{FALSE}.}
-
-\item{method}{Estimator type, either \code{"unbiased"} (default) or \code{"moment"}. In unbiased case the 
-sum of squares is divided by \code{length(x) - 1}, whereas in the latter case the division is by \code{length(x)}.}
 }
 \value{
 A weighted variance.

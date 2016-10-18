@@ -4,16 +4,15 @@
 \alias{running_var}
 \title{Compute running variance of a vector}
 \usage{
-running_var(x, na.rm = FALSE, method = c("unbiased", "moment"))
+running_var(x, method = c("unbiased", "moment"), na.rm = FALSE)
 }
 \arguments{
-\item{x}{A numeric vector.}
+\item{x}{A numeric vector, matrix or array.}
+
+\item{method}{Estimator type, either \code{"unbiased"} (default) or \code{"moment"}.}
 
 \item{na.rm}{If \code{TRUE}, \code{NA} values in \code{x} are
 omitted from the computation. Default is \code{FALSE}.}
-
-\item{method}{Estimator type, either \code{"unbiased"} (default) or \code{"moment"}. In unbiased case the 
-sum of squares is divided by \code{length(x) - 1}, whereas in the latter case the division is by \code{length(x)}.}
 }
 \value{
 A vector containing the recursive variance estimates.

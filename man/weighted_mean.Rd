@@ -4,7 +4,7 @@
 \alias{weighted_mean}
 \title{Compute a weighted mean of a vector}
 \usage{
-weighted_mean(x, w, na.rm = FALSE)
+weighted_mean(x, w, na.rm)
 }
 \arguments{
 \item{x}{A numeric vector.}

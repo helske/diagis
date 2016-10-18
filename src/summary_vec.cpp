@@ -55,6 +55,7 @@ arma::mat arma_weighted_var_vec(arma::mat x, const arma::vec& w, unsigned int ml
 
 
 // x is already transposed, otherwise just like above
+// used internally by arma_weighted_var_mat
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
 arma::mat arma_weighted_var_vec_t(const arma::mat& x, const arma::vec& w, unsigned int ml) {
