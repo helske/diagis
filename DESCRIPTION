@@ -2,7 +2,7 @@ Package: diagis
 Type: Package
 Title: Diagnostic plots and auxiliary functions for importance sampling
 Version: 0.1
-Date: 2016-10-17
+Date: 2016-10-18
 Author: Jouni Helske
 Maintainer: Jouni Helske <jouni.helske@jyu.fi>
 Description: Functions for weight diagnostics and weighted summary statistics of
