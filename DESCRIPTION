@@ -8,6 +8,7 @@ Maintainer: Jouni Helske <jouni.helske@jyu.fi>
 Description: Functions for weight diagnostics and weighted summary statistics of
     generic importance sampling results.
 License: GPL (>= 2)
+Suggests: testthat
 Imports:
     Rcpp (>= 0.12.7),
     ggplot2 (>= 2.1.0),

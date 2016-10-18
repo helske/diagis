@@ -80,7 +80,7 @@ running_mean.matrix <- function(x, na.rm = FALSE) {
 #' @export
 #' @inheritParams weighted_mean
 #' @return A vector containing the recursive weighted mean estimates.
-running_weighted_mean <- function(x, na.rm) {
+running_weighted_mean <- function(x, w, na.rm) {
   UseMethod("running_weighted_mean", x)
 }
 #' @export
