@@ -1,4 +1,4 @@
-context("scalar tets")
+context("scalar tests")
 
 
 test_that("scalar means work", {
@@ -14,15 +14,18 @@ test_that("scalar means work", {
   expect_error(weighted_mean(1, 1:2))
   expect_error(weighted_mean(1:2, 1))
   expect_error(weighted_mean(1:2, "a"))
+  expect_error(weighted_mean(1, "a"))
   expect_error(weighted_mean("a", 1))
-  
+
+  expect_warning(running_mean(1, 1:2))
   expect_error(running_mean(1:2, "a"))
-  expect_error(running_mean("a", 1))
+  expect_error(running_mean("a"))
   
   expect_error(running_weighted_mean(1))
   expect_error(running_weighted_mean(1, 1:2))
   expect_error(running_weighted_mean(1:2, 1))
   expect_error(running_weighted_mean(1:2, "a"))
+  expect_error(running_weighted_mean(1, "a"))
   expect_error(running_weighted_mean("a", 1))
   
 })

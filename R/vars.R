@@ -9,12 +9,17 @@
 #' @param na.rm If \code{TRUE}, \code{NA} values in \code{x} (and corresponding weights in \code{w}) are
 #' omitted from the computation. Default is \code{FALSE}.
 #' @return A weighted variance.
- weighted_var <- function(x, w, method, na.rm) {
+weighted_var <- function(x, w, method, na.rm) {
+  if (!(typeof(w) %in% c("integer", "double"))) {
+    stop("Argument 'w' must be of type 'integer' or 'double'. ")
+  }
   UseMethod("weighted_var", x)
- }
+}
 #' @export
 #' @method weighted_var numeric
 weighted_var.numeric <- function(x, w, method = c("unbiased", "moment"), na.rm = FALSE) {
+  
+  if (length(x) != length(w)) stop("'x' and 'w' have unequal lenghts. ")
   
   method <- pmatch(match.arg(method), c("unbiased", "moment")) - 1L
   
@@ -29,6 +34,9 @@ weighted_var.numeric <- function(x, w, method = c("unbiased", "moment"), na.rm =
 #' @method weighted_var matrix
 weighted_var.matrix <- function(x, w, method = c("unbiased", "moment"), na.rm = FALSE) {
   
+  
+  if (nrow(x) != length(w)) stop("Length of 'w' is not equal to the number of rows in 'x'. ")
+  
   method <- pmatch(match.arg(method), c("unbiased", "moment")) - 1L
   
   if (na.rm) {
@@ -41,6 +49,9 @@ weighted_var.matrix <- function(x, w, method = c("unbiased", "moment"), na.rm = 
 #' @export
 #' @method weighted_var array
 weighted_var.array <- function(x, w, method = c("unbiased", "moment"), na.rm = FALSE) {
+  
+  if (length(dim(x)) != 3) stop("'x' must be three dimensional. ")
+  if (dim(x)[3] != length(w)) stop("Length of 'w' is not equal to the third dimension of 'x'. ")
   
   method <- pmatch(match.arg(method), c("unbiased", "moment")) - 1L
   
@@ -62,6 +73,7 @@ weighted_var.array <- function(x, w, method = c("unbiased", "moment"), na.rm = F
 #' @return A vector containing the recursive variance estimates.
 running_var <- function(x, method = c("unbiased", "moment"), na.rm = FALSE) {
   
+  
   method <- pmatch(match.arg(method), c("unbiased", "moment")) - 1L
   if (na.rm) {
     ind <- !is.na(x)
@@ -80,7 +92,10 @@ running_var <- function(x, method = c("unbiased", "moment"), na.rm = FALSE) {
 #' @return A vector containing the recursive weighted variance estimates.
 running_weighted_var <- function(x, w, method = c("unbiased", "moment"), na.rm = FALSE) {
   
+  if (length(x) != length(w)) stop("'x' and 'w' have unequal lenghts. ")
+  
   method <- pmatch(match.arg(method), c("unbiased", "moment")) - 1L
+  
   if (na.rm) {
     ind <- !is.na(x)
     arma_running_weighted_var(x[ind], w[ind], method)

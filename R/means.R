@@ -9,11 +9,17 @@
 #' omitted from the computation. Default is \code{FALSE}.
 #' @return A weighted mean.
 weighted_mean <- function(x, w, na.rm) {
+  if (!(typeof(w) %in% c("integer", "double"))) {
+    stop("Argument 'w' must be of type 'integer' or 'double'. ")
+  }
   UseMethod("weighted_mean", x)
 }
 #' @export
 #' @method weighted_mean numeric
 weighted_mean.numeric <- function(x, w, na.rm = FALSE) {
+  
+  if (length(x) != length(w)) stop("'x' and 'w' have unequal lenghts. ")
+
   if (na.rm) {
     ind <- !is.na(x)
     arma_weighted_mean(x[ind], w[ind])
@@ -24,6 +30,9 @@ weighted_mean.numeric <- function(x, w, na.rm = FALSE) {
 #' @export
 #' @method weighted_mean matrix
 weighted_mean.matrix<- function(x, w, na.rm = FALSE) {
+
+  if (nrow(x) != length(w)) stop("Length of 'w' is not equal to the number of rows in 'x'. ")
+  
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")
     arma_weighted_mean_vec(x, w)
@@ -34,6 +43,10 @@ weighted_mean.matrix<- function(x, w, na.rm = FALSE) {
 #' @export
 #' @method weighted_mean array
 weighted_mean.array<- function(x, w, na.rm = FALSE) {
+  
+  if (length(dim(x)) != 3) stop("'x' must be three dimensional. ")
+  if (dim(x)[3] != length(w)) stop("Length of 'w' is not equal to the third dimension of 'x'. ")
+  
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")
     arma_weighted_mean_mat(x, w)
@@ -81,11 +94,17 @@ running_mean.matrix <- function(x, na.rm = FALSE) {
 #' @inheritParams weighted_mean
 #' @return A vector containing the recursive weighted mean estimates.
 running_weighted_mean <- function(x, w, na.rm) {
+  if (!(typeof(w) %in% c("integer", "double"))) {
+    stop("Argument 'w' must be of type 'integer' or 'double'. ")
+  }
   UseMethod("running_weighted_mean", x)
 }
 #' @export
 #' @method running_weighted_mean numeric
 running_weighted_mean.numeric <- function(x, w, na.rm = FALSE) {
+  
+    if (length(x) != length(w)) stop("'x' and 'w' have unequal lenghts. ")
+  
   if (na.rm) {
     ind <- !is.na(x)
     arma_running_weighted_mean(x[ind], w[ind])
@@ -96,6 +115,10 @@ running_weighted_mean.numeric <- function(x, w, na.rm = FALSE) {
 #' @export
 #' @method running_weighted_mean matrix
 running_weighted_mean.matrix <- function(x, w, na.rm = FALSE) {
+  
+  
+  if (nrow(x) != length(w)) stop("Length of 'w' is not equal to the number of rows in 'x'. ")
+  
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")
     arma_running_weighted_mean(x, w)
