@@ -8,6 +8,7 @@
 #' @param x A numeric vector of samples used to generate \code{w}. Used for computing \code{f(x)}.
 #' @return An effective sample size estimate.
 ess <- function(w, f, x){
+  stop("speed up!")
   if (missing(f) || missing(x)) {
     1 / sum((w / sum(w)) ^ 2)
   } else {
@@ -30,11 +31,13 @@ ess <- function(w, f, x){
 running_ess <- function(w, f, x){
   if (missing(f) || missing(x)) {
     csw <- cumsum(w)
-    sapply(seq_along(w), function(i) 1/sum((w[1:i]/csw[i])^2))
+    csw2 <- cumsum(w^2)
+    1/(csw2/csw^2)
   } else {
     if (!is.function(f)) stop("Argument 'f' must be a function")
     res <- abs(f(x)) * w
     csw <- cumsum(res)
-    sapply(seq_along(res), function(i) 1/sum((res[1:i]/csw[i])^2))
+    csw2 <- cumsum(res^2)
+    1/(csw2/csw^2)
   }
 }
