@@ -4,7 +4,7 @@
 #' 
 #' @export
 #' @param x A numeric vector.
-#' @param w A numeric vector of non-negative weights. Will be automatically normalized to sum to one.
+#' @param w A numeric vector of non-negative weights. Will be automatically normalised to sum to one.
 #' @param na.rm If \code{TRUE}, \code{NA} values in \code{x} (and corresponding weights in \code{w}) are
 #' omitted from the computation. Default is \code{FALSE}.
 #' @return A weighted mean.
@@ -18,7 +18,7 @@ weighted_mean <- function(x, w, na.rm) {
 #' @method weighted_mean numeric
 weighted_mean.numeric <- function(x, w, na.rm = FALSE) {
   
-  if (length(x) != length(w)) stop("'x' and 'w' have unequal lenghts. ")
+  if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
 
   if (na.rm) {
     ind <- !is.na(x)
@@ -103,7 +103,7 @@ running_weighted_mean <- function(x, w, na.rm) {
 #' @method running_weighted_mean numeric
 running_weighted_mean.numeric <- function(x, w, na.rm = FALSE) {
   
-    if (length(x) != length(w)) stop("'x' and 'w' have unequal lenghts. ")
+    if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
   
   if (na.rm) {
     ind <- !is.na(x)
@@ -116,13 +116,12 @@ running_weighted_mean.numeric <- function(x, w, na.rm = FALSE) {
 #' @method running_weighted_mean matrix
 running_weighted_mean.matrix <- function(x, w, na.rm = FALSE) {
   
-  
   if (nrow(x) != length(w)) stop("Length of 'w' is not equal to the number of rows in 'x'. ")
   
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")
-    arma_running_weighted_mean(x, w)
+    arma_running_weighted_mean_vec(x, w)
   } else {
-    arma_running_weighted_mean(x, w)
+    arma_running_weighted_mean_vec(x, w)
   }
 }

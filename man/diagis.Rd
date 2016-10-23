@@ -6,7 +6,7 @@
 \alias{diagis-package}
 \title{Auxiliary functions and diagnostic plots for importance sampling}
 \description{
-This package contains functions computing weighted summaries and diagonostic plots 
+This package contains functions computing weighted (running) summaries and diagonostic plots 
 for importance sampling problems.
 }
 \examples{

@@ -9,7 +9,7 @@ weighted_var(x, w, method, na.rm)
 \arguments{
 \item{x}{A numeric vector, matrix or array.}
 
-\item{w}{A numeric vector of non-negative weights. Will be automatically normalized to sum to one.}
+\item{w}{A numeric vector of non-negative weights. Will be automatically normalised to sum to one.}
 
 \item{method}{Estimator type, either \code{"unbiased"} (default) or \code{"moment"}.}
 
@@ -20,6 +20,6 @@ omitted from the computation. Default is \code{FALSE}.}
 A weighted variance.
 }
 \description{
-Computes a weighted variance of a vector.
+Computes a weighted variance of a vector, where weights are regarded as probability weights.
 }
 

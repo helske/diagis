@@ -9,7 +9,7 @@ running_weighted_var(x, w, method = c("unbiased", "moment"), na.rm = FALSE)
 \arguments{
 \item{x}{A numeric vector, matrix or array.}
 
-\item{w}{A numeric vector of non-negative weights. Will be automatically normalized to sum to one.}
+\item{w}{A numeric vector of non-negative weights. Will be automatically normalised to sum to one.}
 
 \item{method}{Estimator type, either \code{"unbiased"} (default) or \code{"moment"}.}
 

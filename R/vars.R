@@ -1,10 +1,10 @@
 #' Compute a weighted variance of a vector
 #'
-#' Computes a weighted variance of a vector.
+#' Computes a weighted variance of a vector, where weights are regarded as probability weights.
 #' 
 #' @export
 #' @param x A numeric vector, matrix or array.
-#' @param w A numeric vector of non-negative weights. Will be automatically normalized to sum to one.
+#' @param w A numeric vector of non-negative weights. Will be automatically normalised to sum to one.
 #' @param method Estimator type, either \code{"unbiased"} (default) or \code{"moment"}.
 #' @param na.rm If \code{TRUE}, \code{NA} values in \code{x} (and corresponding weights in \code{w}) are
 #' omitted from the computation. Default is \code{FALSE}.
@@ -19,7 +19,7 @@ weighted_var <- function(x, w, method, na.rm) {
 #' @method weighted_var numeric
 weighted_var.numeric <- function(x, w, method = c("unbiased", "moment"), na.rm = FALSE) {
   
-  if (length(x) != length(w)) stop("'x' and 'w' have unequal lenghts. ")
+  if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
   
   method <- pmatch(match.arg(method), c("unbiased", "moment")) - 1L
   
@@ -73,7 +73,6 @@ weighted_var.array <- function(x, w, method = c("unbiased", "moment"), na.rm = F
 #' @return A vector containing the recursive variance estimates.
 running_var <- function(x, method = c("unbiased", "moment"), na.rm = FALSE) {
   
-  
   method <- pmatch(match.arg(method), c("unbiased", "moment")) - 1L
   if (na.rm) {
     ind <- !is.na(x)
@@ -92,7 +91,7 @@ running_var <- function(x, method = c("unbiased", "moment"), na.rm = FALSE) {
 #' @return A vector containing the recursive weighted variance estimates.
 running_weighted_var <- function(x, w, method = c("unbiased", "moment"), na.rm = FALSE) {
   
-  if (length(x) != length(w)) stop("'x' and 'w' have unequal lenghts. ")
+  if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
   
   method <- pmatch(match.arg(method), c("unbiased", "moment")) - 1L
   

@@ -9,14 +9,17 @@
 #' @return An effective sample size estimate.
 ess <- function(w, f, x){
   
+  if (any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
   if (missing(f) || missing(x)) {
     1 / sum((w / sum(w)) ^ 2)
   } else {
     
-    if (length(x) != length(w)) stop("'x' and 'w' have unequal lenghts. ")
+    if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
     
     if (!is.function(f)) stop("Argument 'f' must be a function")
-    res <- abs(f(x)) * w
+    fres <- f(x)
+    if (length(fres) != length(w)) stop("'f(x)' should return vector with length equal to the length of 'w'. ")
+    res <- abs(fres) * w
     res <- res / sum(res)
     1 / sum(res ^ 2)
   }
@@ -33,6 +36,8 @@ ess <- function(w, f, x){
 #' @return An effective sample size estimate.
 running_ess <- function(w, f, x){
   
+  if (any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  
   if (missing(f) || missing(x)) {
     
     csw <- cumsum(w)
@@ -43,7 +48,9 @@ running_ess <- function(w, f, x){
     
     if (length(x) != length(w)) stop("'x' and 'w' have unequal lenghts. ")
     if (!is.function(f)) stop("Argument 'f' must be a function")
-    res <- abs(f(x)) * w
+    fres <- f(x)
+    if (length(fres) != length(w)) stop("'f(x)' should return vector with length equal to the length of 'w'. ")
+    res <- abs(fres) * w
     csw <- cumsum(res)
     csw2 <- cumsum(res^2)
     1/(csw2/csw^2)

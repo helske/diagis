@@ -1,6 +1,6 @@
 #' Auxiliary functions and diagnostic plots for importance sampling
 #'
-#' This package contains functions computing weighted summaries and diagonostic plots 
+#' This package contains functions computing weighted (running) summaries and diagonostic plots 
 #' for importance sampling problems. 
 #' 
 #' @docType package

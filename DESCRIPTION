@@ -1,12 +1,12 @@
 Package: diagis
 Type: Package
-Title: Diagnostic plots and auxiliary functions for importance sampling
+Title: Diagnostic plots and auxiliary functions for weighted samples from importance sampling
 Version: 0.1
-Date: 2016-10-18
+Date: 2016-10-23
 Author: Jouni Helske
 Maintainer: Jouni Helske <jouni.helske@jyu.fi>
-Description: Functions for weight diagnostics and weighted summary statistics of
-    generic importance sampling results.
+Description: Fast functions for effective sample size, weighted multivariate mean and variance computation, 
+    and weight diagnostic plot for generic importance sampling type results.
 License: GPL (>= 2)
 Suggests: testthat
 Imports:
