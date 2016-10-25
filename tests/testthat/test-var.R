@@ -57,9 +57,9 @@ test_that("matrix vars work", {
   set.seed(123)
   x <- array(rnorm(40), c(5, 2, 4))
   w <- runif(4)
-  expect_equal(weighted_var(x, w)[2, 2, 2], weighted_var(x[2, 2, ], w))
+  expect_equal(weighted_var(x, w)[2, 2, 3], weighted_var(x[3, 2, ], w))
   w2 <- w / sum(w)
-  expect_equal(weighted_var(x, w, method = "moment")[3, 3, 2], (sum(w2 * x[3, 2, ]^2) - sum(w2 * x[3, 2, ])^2))
+  expect_equal(weighted_var(x, w, method = "moment")[2, 2, 3], (sum(w2 * x[3, 2, ]^2) - sum(w2 * x[3, 2, ])^2))
 
   expect_error(weighted_var(x))
   expect_error(weighted_var(x, 1:2))

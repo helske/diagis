@@ -18,10 +18,10 @@ arma::mat arma_weighted_mean_mat(const arma::cube& x, const arma::vec& w) {
 // [[Rcpp::export]]
 arma::cube arma_weighted_var_mat(const arma::cube& x, const arma::vec& w, unsigned int ml) {
   
-  arma::cube var_x(x.n_rows, x.n_rows, x.n_cols);
+  arma::cube var_x(x.n_cols, x.n_cols, x.n_rows);
   
-  for (arma::uword i = 0; i < x.n_cols; i++) {
-    var_x.slice(i) = arma_weighted_var_vec_t(x.tube(arma::span::all, arma::span(i)), w, ml);
+  for (arma::uword i = 0; i < x.n_rows; i++) {
+    var_x.slice(i) = arma_weighted_var_vec_t(x.tube(arma::span(i),arma::span::all), w, ml);
   }
   return var_x;
 }
