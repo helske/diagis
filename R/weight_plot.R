@@ -19,6 +19,9 @@
 #' w_opt <- dnorm(x_opt) / dnorm(x_opt, 0, sqrt(2))
 #' weight_plot(w_opt)
 weight_plot <- function(w){
+  
+  if (any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  
   ind <- w > sort(w, decreasing = TRUE)[min(100, length(w))]
   dat <- data.frame(weight = w[ind], index = which(ind))
   p1 <- ggplot(data = dat, aes_(x = ~index, y = ~weight)) + geom_point() + 

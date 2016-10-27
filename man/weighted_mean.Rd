@@ -2,12 +2,14 @@
 % Please edit documentation in R/means.R
 \name{weighted_mean}
 \alias{weighted_mean}
-\title{Compute a weighted mean of a vector}
+\title{Weighted mean}
 \usage{
 weighted_mean(x, w, na.rm)
 }
 \arguments{
-\item{x}{A numeric vector.}
+\item{x}{A numeric vector, matrix or three dimensional array.
+For matrix, the mean is computed for each column, and 
+for array the sweep is done over the third dimension.}
 
 \item{w}{A numeric vector of non-negative weights. Will be automatically normalised to sum to one.}
 
@@ -18,6 +20,6 @@ omitted from the computation. Default is \code{FALSE}.}
 A weighted mean.
 }
 \description{
-Computes a weighted mean of a vector.
+Computes a weighted mean of a vector, matrix, or a three dimensional array.
 }
 

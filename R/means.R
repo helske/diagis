@@ -1,9 +1,11 @@
-#' Compute a weighted mean of a vector
+#' Weighted mean
 #'
-#' Computes a weighted mean of a vector.
+#' Computes a weighted mean of a vector, matrix, or a three dimensional array.
 #' 
 #' @export
-#' @param x A numeric vector.
+#' @param x A numeric vector, matrix or three dimensional array.
+#' For matrix, the mean is computed for each column, and 
+#' for array the sweep is done over the third dimension.
 #' @param w A numeric vector of non-negative weights. Will be automatically normalised to sum to one.
 #' @param na.rm If \code{TRUE}, \code{NA} values in \code{x} (and corresponding weights in \code{w}) are
 #' omitted from the computation. Default is \code{FALSE}.
@@ -54,9 +56,9 @@ weighted_mean.array<- function(x, w, na.rm = FALSE) {
     arma_weighted_mean_mat(x, w)
   }
 }
-#' Compute running mean of a vector
+#' Running mean
 #' 
-#' Computes running mean of a vector, returning the values from each step.
+#' Computes running mean of a vector or matrix, returning the values from each step.
 #'
 #' @export
 #' @inheritParams weighted_mean
@@ -86,9 +88,9 @@ running_mean.matrix <- function(x, na.rm = FALSE) {
     arma_running_mean_vec(x)
   }
 }
-#' Compute running weighted mean of a vector
+#' Running weighted mean
 #'
-#' Computes running weighted mean of a vector, returning the values from each step.
+#' Computes running weighted mean of a vector or matrix, returning the values from each step.
 #' 
 #' @export
 #' @inheritParams weighted_mean

@@ -1,9 +1,15 @@
-#' Compute a weighted variance of a vector
+#' Weighted covariance
 #'
-#' Computes a weighted variance of a vector, where weights are regarded as probability weights.
+#' Computes a weighted variance/covariance of a vector, matrix or a three dimensional array.
+#' 
+#' @note Compared to some other R functions, here the weights are regarded as probability weights,
+#' not frequency weights.
 #' 
 #' @export
-#' @param x A numeric vector, matrix or array.
+#' @param x A numeric vector, matrix or three dimensional array.
+#' For matrix, covariances are computed between columns. 
+#' For array, marginal covariances are computed for each column, 
+#' i.e. for $m x n x k$ array function returns $m x m x n$ array. 
 #' @param w A numeric vector of non-negative weights. Will be automatically normalised to sum to one.
 #' @param method Estimator type, either \code{"unbiased"} (default) or \code{"moment"}.
 #' @param na.rm If \code{TRUE}, \code{NA} values in \code{x} (and corresponding weights in \code{w}) are
@@ -62,11 +68,12 @@ weighted_var.array <- function(x, w, method = c("unbiased", "moment"), na.rm = F
     arma_weighted_var_mat(x, w, method)
   }
 }
-#' Compute running variance of a vector
+#' Running variance of a vector
 #' 
 #' Computes running variance of a vector, returning the values from each step.
 #' 
 #' @export
+#' @param x A numeric vector
 #' @inheritParams weighted_var
 #' @param na.rm If \code{TRUE}, \code{NA} values in \code{x} are
 #' omitted from the computation. Default is \code{FALSE}.
@@ -82,11 +89,12 @@ running_var <- function(x, method = c("unbiased", "moment"), na.rm = FALSE) {
   }
 }
 
-#' Compute running weighted variance of a vector
+#' Running weighted variance of a vector
 #'
 #' Computes running weighted variance of a vector, returning the values from each step.
 #' 
 #' @export
+#' @param x A numeric vector, 
 #' @inheritParams weighted_var
 #' @return A vector containing the recursive weighted variance estimates.
 running_weighted_var <- function(x, w, method = c("unbiased", "moment"), na.rm = FALSE) {

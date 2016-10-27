@@ -2,12 +2,15 @@
 % Please edit documentation in R/vars.R
 \name{weighted_var}
 \alias{weighted_var}
-\title{Compute a weighted variance of a vector}
+\title{Weighted covariance}
 \usage{
 weighted_var(x, w, method, na.rm)
 }
 \arguments{
-\item{x}{A numeric vector, matrix or array.}
+\item{x}{A numeric vector, matrix or three dimensional array.
+For matrix, covariances are computed between columns. 
+For array, marginal covariances are computed for each column, 
+i.e. for $m x n x k$ array function returns $m x m x n$ array.}
 
 \item{w}{A numeric vector of non-negative weights. Will be automatically normalised to sum to one.}
 
@@ -20,6 +23,10 @@ omitted from the computation. Default is \code{FALSE}.}
 A weighted variance.
 }
 \description{
-Computes a weighted variance of a vector, where weights are regarded as probability weights.
+Computes a weighted variance/covariance of a vector, matrix or a three dimensional array.
+}
+\note{
+Compared to some other R functions, here the weights are regarded as probability weights,
+not frequency weights.
 }
 

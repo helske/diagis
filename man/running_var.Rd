@@ -2,12 +2,12 @@
 % Please edit documentation in R/vars.R
 \name{running_var}
 \alias{running_var}
-\title{Compute running variance of a vector}
+\title{Running variance of a vector}
 \usage{
 running_var(x, method = c("unbiased", "moment"), na.rm = FALSE)
 }
 \arguments{
-\item{x}{A numeric vector, matrix or array.}
+\item{x}{A numeric vector}
 
 \item{method}{Estimator type, either \code{"unbiased"} (default) or \code{"moment"}.}
 

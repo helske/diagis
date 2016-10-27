@@ -2,12 +2,14 @@
 % Please edit documentation in R/means.R
 \name{running_weighted_mean}
 \alias{running_weighted_mean}
-\title{Compute running weighted mean of a vector}
+\title{Running weighted mean}
 \usage{
 running_weighted_mean(x, w, na.rm)
 }
 \arguments{
-\item{x}{A numeric vector.}
+\item{x}{A numeric vector, matrix or three dimensional array.
+For matrix, the mean is computed for each column, and 
+for array the sweep is done over the third dimension.}
 
 \item{w}{A numeric vector of non-negative weights. Will be automatically normalised to sum to one.}
 
@@ -18,6 +20,6 @@ omitted from the computation. Default is \code{FALSE}.}
 A vector containing the recursive weighted mean estimates.
 }
 \description{
-Computes running weighted mean of a vector, returning the values from each step.
+Computes running weighted mean of a vector or matrix, returning the values from each step.
 }
 

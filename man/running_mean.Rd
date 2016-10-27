@@ -2,12 +2,14 @@
 % Please edit documentation in R/means.R
 \name{running_mean}
 \alias{running_mean}
-\title{Compute running mean of a vector}
+\title{Running mean}
 \usage{
 running_mean(x, na.rm)
 }
 \arguments{
-\item{x}{A numeric vector.}
+\item{x}{A numeric vector, matrix or three dimensional array.
+For matrix, the mean is computed for each column, and 
+for array the sweep is done over the third dimension.}
 
 \item{na.rm}{If \code{TRUE}, \code{NA} values in \code{x} are
 omitted from the computation. Default is \code{FALSE}.}
@@ -16,6 +18,6 @@ omitted from the computation. Default is \code{FALSE}.}
 A vector containing the recursive mean estimates.
 }
 \description{
-Computes running mean of a vector, returning the values from each step.
+Computes running mean of a vector or matrix, returning the values from each step.
 }
 

@@ -2,12 +2,12 @@
 % Please edit documentation in R/vars.R
 \name{running_weighted_var}
 \alias{running_weighted_var}
-\title{Compute running weighted variance of a vector}
+\title{Running weighted variance of a vector}
 \usage{
 running_weighted_var(x, w, method = c("unbiased", "moment"), na.rm = FALSE)
 }
 \arguments{
-\item{x}{A numeric vector, matrix or array.}
+\item{x}{A numeric vector,}
 
 \item{w}{A numeric vector of non-negative weights. Will be automatically normalised to sum to one.}
 
