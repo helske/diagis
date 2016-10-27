@@ -10,7 +10,8 @@ Description: Fast functions for effective sample size, weighted multivariate mea
 License: GPL (>= 2)
 Suggests: 
     testthat,
-    knitr
+    knitr,
+    rmarkdown
 Imports:
     Rcpp (>= 0.12.7),
     ggplot2 (>= 2.1.0),
