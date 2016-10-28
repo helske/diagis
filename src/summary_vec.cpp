@@ -78,3 +78,18 @@ arma::mat arma_weighted_var_vec_t(const arma::mat& x, const arma::vec& w, unsign
 
 // don't see interest in running statistics for vectors... 
 // make a PR or file an issue in github if you really need it
+
+
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export]]
+arma::vec arma_weighted_se_vec(const arma::mat& x, const arma::vec& w) {
+  
+  arma::vec mean_x = arma_weighted_mean_vec(x, w);
+  arma::vec wnorm = w / arma::sum(w);
+  arma::vec ses(x.n_cols);
+  for (arma::uword i = 0; i < x.n_cols; i++) {
+    ses(i) = sqrt(arma::sum(arma::square(wnorm % (x.col(i) - mean_x(i)))));
+  }
+  return ses;
+}
+

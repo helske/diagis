@@ -99,3 +99,14 @@ arma::vec arma_running_weighted_var(const arma::vec& x, const arma::vec& w, unsi
   
   return var_x;
 }
+
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export]]
+double arma_weighted_se(const arma::vec& x, const arma::vec& w) {
+  
+  double mean_x = arma_weighted_mean(x, w);
+  arma::vec wnorm = w / arma::sum(w);
+  return sqrt(arma::accu(arma::square(wnorm % (x - mean_x))));
+}
+
+
