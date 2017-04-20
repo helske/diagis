@@ -16,7 +16,8 @@ Suggests:
 Imports:
     Rcpp (>= 0.12.7),
     ggplot2 (>= 2.1.0),
-    gridExtra
+    gridExtra,
+    coda
 LinkingTo: Rcpp, RcppArmadillo
 RoxygenNote: 5.0.1
 VignetteBuilder: knitr
