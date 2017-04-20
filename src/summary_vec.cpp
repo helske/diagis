@@ -47,7 +47,7 @@ arma::mat arma_weighted_var_vec(arma::mat x, const arma::vec& w, unsigned int ml
       sum_w = tmp;
     }
   var_x /= sum_w;
-  if (ml == 0) {
+  if (ml == 1) {
     var_x /= (1.0 - arma::accu(arma::square(w)) / (sum_w * sum_w));
   }
   return var_x;
@@ -70,7 +70,7 @@ arma::mat arma_weighted_var_vec_t(const arma::mat& x, const arma::vec& w, unsign
       sum_w = tmp;
     }
   var_x /= sum_w;
-  if (ml == 0) {
+  if (ml == 1) {
     var_x /= (1.0 - arma::accu(arma::square(w)) / (sum_w * sum_w));
   }
   return var_x;

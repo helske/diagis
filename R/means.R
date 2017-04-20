@@ -87,12 +87,12 @@ running_mean <- function(x, na.rm) {
 running_mean.mcmc <- function(x, na.rm = FALSE) {
   dimx <- dim(x)
   if (is.null(dimx)) {
-    running_mean.numeric(x, na.rm)
+    running_mean(x, na.rm)
   } else {
     if (length(dimx) == 2) {
      running_mean.matrix(x, na.rm)
     } else {
-      running_mean.array(x, na.rm)
+      running_mean(x, na.rm)
     }
   }
 }
@@ -139,7 +139,7 @@ running_weighted_mean.mcmc <- function(x, w, na.rm = FALSE) {
     if (length(dimx) == 2) {
       running_weighted_mean.matrix(x, w, na.rm)
     } else {
-      running_weighted_mean.array(x, w, na.rm)
+      running_weighted_mean(x, w, na.rm)
     }
   }
 }

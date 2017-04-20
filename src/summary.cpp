@@ -53,7 +53,7 @@ double arma_weighted_var(const arma::vec& x, const arma::vec& w, unsigned int ml
     sum_w = temp;
   }
   s /= sum_w;
-  if (ml == 0) {
+  if (ml == 1) {
     s /= (1.0 - arma::accu(arma::square(w)) / (sum_w * sum_w));
   }
   return s;
@@ -93,7 +93,7 @@ arma::vec arma_running_weighted_var(const arma::vec& x, const arma::vec& w, unsi
   }
   
   var_x /= sum_w;
-  if (ml == 0) {
+  if (ml == 1) {
     var_x = var_x / (1.0 - arma::cumsum(arma::square(w)) / arma::square(sum_w));
   }
   

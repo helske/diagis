@@ -27,7 +27,7 @@ weighted_se.mcmc <- function(x, w, na.rm = FALSE) {
     if (length(dimx) == 2) {
       weighted_se.matrix(x, w, na.rm)
     } else {
-      weighted_se.array(x, w, na.rm)
+      weighted_se(x, w, na.rm)
     }
   }
 }
