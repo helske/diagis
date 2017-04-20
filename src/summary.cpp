@@ -68,7 +68,7 @@ arma::vec arma_running_var(const arma::vec& x, unsigned int ml) {
   arma::running_stat<double> stats;
   for(arma::uword i = 0; i < x.n_elem; i++) {
     stats(x(i));
-    var_x(i) = stats.var(ml);
+    var_x(i) = stats.var(!ml);
   }
   return var_x;
 }
