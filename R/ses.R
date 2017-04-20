@@ -18,6 +18,20 @@ weighted_se <- function(x, w, na.rm) {
   UseMethod("weighted_se", x)
 }
 #' @export
+#' @method weighted_se mcmc
+weighted_se.mcmc <- function(x, w, na.rm = FALSE) {
+  dimx <- dim(x)
+  if (is.null(dimx)) {
+    weighted_se.numeric(x, w, na.rm)
+  } else {
+    if (length(dimx) == 2) {
+      weighted_se.matrix(x, w, na.rm)
+    } else {
+      weighted_se.array(x, w, na.rm)
+    }
+  }
+}
+#' @export
 #' @method weighted_se numeric
 weighted_se.numeric <- function(x, w, na.rm = FALSE) {
   

@@ -3,8 +3,8 @@
 #' Computes a weighted mean of a vector, matrix, or a three dimensional array.
 #' 
 #' @export
-#' @param x A numeric vector, matrix or three dimensional array.
-#' For matrix, the mean is computed for each column, and 
+#' @param x A numeric vector, matrix, three dimensional array, or an \code{mcmc} object from
+#' the \code{coda} package. For matrix, the mean is computed for each column, and 
 #' for array the sweep is done over the third dimension.
 #' @param w A numeric vector of non-negative weights. Will be automatically normalised to sum to one.
 #' @param na.rm If \code{TRUE}, \code{NA} values in \code{x} (and corresponding weights in \code{w}) are
@@ -15,6 +15,20 @@ weighted_mean <- function(x, w, na.rm) {
     stop("Argument 'w' must be of type 'integer' or 'double'. ")
   }
   UseMethod("weighted_mean", x)
+}
+#' @export
+#' @method weighted_mean mcmc
+weighted_mean.mcmc <- function(x, w, na.rm = FALSE) {
+  dimx <- dim(x)
+  if (is.null(dimx)) {
+    weighted_mean.numeric(x, w, na.rm)
+  } else {
+    if (length(dimx) == 2) {
+      weighted_mean.matrix(x, w, na.rm)
+    } else {
+      weighted_mean.array(x, w, na.rm)
+    }
+  }
 }
 #' @export
 #' @method weighted_mean numeric
@@ -69,6 +83,20 @@ running_mean <- function(x, na.rm) {
   UseMethod("running_mean", x)
 }
 #' @export
+#' @method running_mean mcmc
+running_mean.mcmc <- function(x, na.rm = FALSE) {
+  dimx <- dim(x)
+  if (is.null(dimx)) {
+    running_mean.numeric(x, na.rm)
+  } else {
+    if (length(dimx) == 2) {
+     running_mean.matrix(x, na.rm)
+    } else {
+      running_mean.array(x, na.rm)
+    }
+  }
+}
+#' @export
 #' @method running_mean numeric
 running_mean.numeric <- function(x, na.rm = FALSE) {
   if (na.rm) {
@@ -100,6 +128,20 @@ running_weighted_mean <- function(x, w, na.rm) {
     stop("Argument 'w' must be of type 'integer' or 'double'. ")
   }
   UseMethod("running_weighted_mean", x)
+}
+#' @export
+#' @method running_weighted_mean mcmc
+running_weighted_mean.mcmc <- function(x, w, na.rm = FALSE) {
+  dimx <- dim(x)
+  if (is.null(dimx)) {
+    running_weighted_mean.numeric(x, w, na.rm)
+  } else {
+    if (length(dimx) == 2) {
+      running_weighted_mean.matrix(x, w, na.rm)
+    } else {
+      running_weighted_mean.array(x, w, na.rm)
+    }
+  }
 }
 #' @export
 #' @method running_weighted_mean numeric

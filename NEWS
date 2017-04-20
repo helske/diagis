@@ -1,0 +1,7 @@
+diagis 0.1.2 (Release date: 2017-xx-xx)
+==============
+
+* Now supports mcmc objects from coda.
+* Switched the default behaviour of weighted variance, now computes the moment
+  estimator by default, as the "unbiased" method is not truly unbiased in case 
+  of self-normalized importance sampling.

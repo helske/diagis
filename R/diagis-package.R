@@ -6,6 +6,7 @@
 #' @docType package
 #' @name diagis
 #' @aliases diagis
+#' @importFrom coda mcmc
 #' @importFrom Rcpp evalCpp
 #' @useDynLib diagis
 #' @examples

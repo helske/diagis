@@ -22,10 +22,10 @@ arma::vec arma_running_mean(const arma::vec& x) {
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
 arma::vec arma_running_weighted_mean(const arma::vec& x, const arma::vec& w) {
- 
+  
   arma::vec mean_x(x.n_elem);
   double sum_w = w(0);
-   mean_x(0) = x(0);
+  mean_x(0) = x(0);
   for(arma::uword i = 1; i < x.n_elem; i++) {
     double temp = w(i) + sum_w;
     double diff = x(i) - mean_x(i - 1);

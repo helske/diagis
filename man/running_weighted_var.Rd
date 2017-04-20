@@ -4,14 +4,16 @@
 \alias{running_weighted_var}
 \title{Running weighted variance of a vector}
 \usage{
-running_weighted_var(x, w, method = c("unbiased", "moment"), na.rm = FALSE)
+running_weighted_var(x, w, method = c("moment", "unbiased"), na.rm = FALSE)
 }
 \arguments{
-\item{x}{A numeric vector,}
+\item{x}{A numeric vector or object that can be coerced to such.}
 
-\item{w}{A numeric vector of non-negative weights. Will be automatically normalised to sum to one.}
+\item{w}{A numeric vector of non-negative weights. Will be automatically 
+normalised to sum to one.}
 
-\item{method}{Estimator type, either \code{"unbiased"} (default) or \code{"moment"}.}
+\item{method}{Estimator type, either \code{"moment"} (default) or 
+\code{"unbiased"}, which is unbiased only in case of frequency weights.}
 
 \item{na.rm}{If \code{TRUE}, \code{NA} values in \code{x} (and corresponding weights in \code{w}) are
 omitted from the computation. Default is \code{FALSE}.}

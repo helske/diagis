@@ -7,8 +7,8 @@
 weighted_mean(x, w, na.rm)
 }
 \arguments{
-\item{x}{A numeric vector, matrix or three dimensional array.
-For matrix, the mean is computed for each column, and 
+\item{x}{A numeric vector, matrix, three dimensional array, or an \code{mcmc} object from
+the \code{coda} package. For matrix, the mean is computed for each column, and 
 for array the sweep is done over the third dimension.}
 
 \item{w}{A numeric vector of non-negative weights. Will be automatically normalised to sum to one.}

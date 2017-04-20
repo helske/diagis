@@ -7,8 +7,8 @@
 running_mean(x, na.rm)
 }
 \arguments{
-\item{x}{A numeric vector, matrix or three dimensional array.
-For matrix, the mean is computed for each column, and 
+\item{x}{A numeric vector, matrix, three dimensional array, or an \code{mcmc} object from
+the \code{coda} package. For matrix, the mean is computed for each column, and 
 for array the sweep is done over the third dimension.}
 
 \item{na.rm}{If \code{TRUE}, \code{NA} values in \code{x} are

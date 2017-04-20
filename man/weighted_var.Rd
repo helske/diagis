@@ -12,9 +12,11 @@ For matrix, covariances are computed between columns.
 For array, marginal covariances are computed for each column, 
 i.e. for $m x n x k$ array function returns $m x m x n$ array.}
 
-\item{w}{A numeric vector of non-negative weights. Will be automatically normalised to sum to one.}
+\item{w}{A numeric vector of non-negative weights. Will be automatically 
+normalised to sum to one.}
 
-\item{method}{Estimator type, either \code{"unbiased"} (default) or \code{"moment"}.}
+\item{method}{Estimator type, either \code{"moment"} (default) or 
+\code{"unbiased"}, which is unbiased only in case of frequency weights.}
 
 \item{na.rm}{If \code{TRUE}, \code{NA} values in \code{x} (and corresponding weights in \code{w}) are
 omitted from the computation. Default is \code{FALSE}.}
