@@ -35,4 +35,3 @@ weighted_var(x_inf, w_inf) #!!
 weight_plot(w_inf)
 weight_plot(w_opt)
 }
-

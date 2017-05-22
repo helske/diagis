@@ -24,4 +24,3 @@ Computes a weighted standard error of a vector or matrix.
 Compared to some other R functions, here the weights are regarded as probability weights,
 not frequency weights.
 }
-

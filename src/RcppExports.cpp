@@ -6,91 +6,6 @@
 
 using namespace Rcpp;
 
-// arma_weighted_mean
-double arma_weighted_mean(const arma::vec& x, const arma::vec& w);
-RcppExport SEXP diagis_arma_weighted_mean(SEXP xSEXP, SEXP wSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type w(wSEXP);
-    rcpp_result_gen = Rcpp::wrap(arma_weighted_mean(x, w));
-    return rcpp_result_gen;
-END_RCPP
-}
-// arma_running_mean
-arma::vec arma_running_mean(const arma::vec& x);
-RcppExport SEXP diagis_arma_running_mean(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(arma_running_mean(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// arma_running_weighted_mean
-arma::vec arma_running_weighted_mean(const arma::vec& x, const arma::vec& w);
-RcppExport SEXP diagis_arma_running_weighted_mean(SEXP xSEXP, SEXP wSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type w(wSEXP);
-    rcpp_result_gen = Rcpp::wrap(arma_running_weighted_mean(x, w));
-    return rcpp_result_gen;
-END_RCPP
-}
-// arma_weighted_var
-double arma_weighted_var(const arma::vec& x, const arma::vec& w, unsigned int ml);
-RcppExport SEXP diagis_arma_weighted_var(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type w(wSEXP);
-    Rcpp::traits::input_parameter< unsigned int >::type ml(mlSEXP);
-    rcpp_result_gen = Rcpp::wrap(arma_weighted_var(x, w, ml));
-    return rcpp_result_gen;
-END_RCPP
-}
-// arma_running_var
-arma::vec arma_running_var(const arma::vec& x, unsigned int ml);
-RcppExport SEXP diagis_arma_running_var(SEXP xSEXP, SEXP mlSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< unsigned int >::type ml(mlSEXP);
-    rcpp_result_gen = Rcpp::wrap(arma_running_var(x, ml));
-    return rcpp_result_gen;
-END_RCPP
-}
-// arma_running_weighted_var
-arma::vec arma_running_weighted_var(const arma::vec& x, const arma::vec& w, unsigned int ml);
-RcppExport SEXP diagis_arma_running_weighted_var(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type w(wSEXP);
-    Rcpp::traits::input_parameter< unsigned int >::type ml(mlSEXP);
-    rcpp_result_gen = Rcpp::wrap(arma_running_weighted_var(x, w, ml));
-    return rcpp_result_gen;
-END_RCPP
-}
-// arma_weighted_se
-double arma_weighted_se(const arma::vec& x, const arma::vec& w);
-RcppExport SEXP diagis_arma_weighted_se(SEXP xSEXP, SEXP wSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type w(wSEXP);
-    rcpp_result_gen = Rcpp::wrap(arma_weighted_se(x, w));
-    return rcpp_result_gen;
-END_RCPP
-}
 // arma_weighted_mean_mat
 arma::mat arma_weighted_mean_mat(const arma::cube& x, const arma::vec& w);
 RcppExport SEXP diagis_arma_weighted_mean_mat(SEXP xSEXP, SEXP wSEXP) {
@@ -186,6 +101,91 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
     Rcpp::traits::input_parameter< const arma::vec& >::type w(wSEXP);
     rcpp_result_gen = Rcpp::wrap(arma_weighted_se_vec(x, w));
+    return rcpp_result_gen;
+END_RCPP
+}
+// arma_weighted_mean
+double arma_weighted_mean(const arma::vec& x, const arma::vec& w);
+RcppExport SEXP diagis_arma_weighted_mean(SEXP xSEXP, SEXP wSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type w(wSEXP);
+    rcpp_result_gen = Rcpp::wrap(arma_weighted_mean(x, w));
+    return rcpp_result_gen;
+END_RCPP
+}
+// arma_running_mean
+arma::vec arma_running_mean(const arma::vec& x);
+RcppExport SEXP diagis_arma_running_mean(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(arma_running_mean(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// arma_running_weighted_mean
+arma::vec arma_running_weighted_mean(const arma::vec& x, const arma::vec& w);
+RcppExport SEXP diagis_arma_running_weighted_mean(SEXP xSEXP, SEXP wSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type w(wSEXP);
+    rcpp_result_gen = Rcpp::wrap(arma_running_weighted_mean(x, w));
+    return rcpp_result_gen;
+END_RCPP
+}
+// arma_weighted_var
+double arma_weighted_var(const arma::vec& x, const arma::vec& w, unsigned int ml);
+RcppExport SEXP diagis_arma_weighted_var(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type w(wSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type ml(mlSEXP);
+    rcpp_result_gen = Rcpp::wrap(arma_weighted_var(x, w, ml));
+    return rcpp_result_gen;
+END_RCPP
+}
+// arma_running_var
+arma::vec arma_running_var(const arma::vec& x, unsigned int ml);
+RcppExport SEXP diagis_arma_running_var(SEXP xSEXP, SEXP mlSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type ml(mlSEXP);
+    rcpp_result_gen = Rcpp::wrap(arma_running_var(x, ml));
+    return rcpp_result_gen;
+END_RCPP
+}
+// arma_running_weighted_var
+arma::vec arma_running_weighted_var(const arma::vec& x, const arma::vec& w, unsigned int ml);
+RcppExport SEXP diagis_arma_running_weighted_var(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type w(wSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type ml(mlSEXP);
+    rcpp_result_gen = Rcpp::wrap(arma_running_weighted_var(x, w, ml));
+    return rcpp_result_gen;
+END_RCPP
+}
+// arma_weighted_se
+double arma_weighted_se(const arma::vec& x, const arma::vec& w);
+RcppExport SEXP diagis_arma_weighted_se(SEXP xSEXP, SEXP wSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type w(wSEXP);
+    rcpp_result_gen = Rcpp::wrap(arma_weighted_se(x, w));
     return rcpp_result_gen;
 END_RCPP
 }

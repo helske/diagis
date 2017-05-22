@@ -36,7 +36,7 @@ ess <- function(w, f, x){
 #' @return An effective sample size estimate.
 running_ess <- function(w, f, x){
   
-  if (any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  if (!is.numeric(w) || any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
   
   if (missing(f) || missing(x)) {
     

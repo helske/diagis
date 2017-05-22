@@ -24,4 +24,3 @@ A vector containing the recursive weighted variance estimates.
 \description{
 Computes running weighted variance of a vector, returning the values from each step.
 }
-

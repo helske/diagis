@@ -21,4 +21,3 @@ A vector containing the recursive variance estimates.
 \description{
 Computes running variance of a vector, returning the values from each step.
 }
-

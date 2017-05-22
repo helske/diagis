@@ -19,4 +19,3 @@ An effective sample size estimate.
 \description{
 Computes the effective sample size (ESS) of importance sampling estimator.
 }
-

@@ -24,6 +24,11 @@ weighted_var <- function(x, w, method, na.rm) {
   UseMethod("weighted_var", x)
 }
 #' @export
+#' @method weighted_var ts
+weighted_var.ts <- function(x, w, method = c("moment", "unbiased"), na.rm = FALSE) {
+  weighted_var(x = as.numeric(x), w = w, method = method, na.rm = na.rm)
+}
+#' @export
 #' @method weighted_var mcmc
 weighted_var.mcmc <- function(x, w, method = c("moment", "unbiased"), na.rm = FALSE) {
   dimx <- dim(x)
@@ -103,7 +108,6 @@ running_var <- function(x, method = c("moment", "unbiased"), na.rm = FALSE) {
     arma_running_var(x, method)
   }
 }
-
 #' Running weighted variance of a vector
 #'
 #' Computes running weighted variance of a vector, returning the values from each step.
@@ -117,11 +121,11 @@ running_weighted_var <- function(x, w, method = c("moment", "unbiased"), na.rm =
   if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
   
   method <- pmatch(match.arg(method), c("moment", "unbiased")) - 1L
-  
+  start <- which(w > 0)[1]
   if (na.rm) {
     ind <- !is.na(x)
-    arma_running_weighted_var(x[ind], w[ind], method)
+    arma_running_weighted_var(x[start:length(x)][ind], w[start:length(x)][ind], method)
   } else {
-    arma_running_weighted_var(x, w, method)
+    arma_running_weighted_var(x[start:length(x)], w[start:length(x)], method)
   }
 }

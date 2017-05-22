@@ -2,7 +2,7 @@ Package: diagis
 Type: Package
 Title: Diagnostic Plot and Multivariate Summary Statistics of Weighted Samples from Importance Sampling
 Version: 0.1.2
-Date: 2017-4-20
+Date: 2017-05-22
 Author: Jouni Helske
 Maintainer: Jouni Helske <jouni.helske@jyu.fi>
 Description: Fast functions for effective sample size, weighted multivariate mean and variance computation, 
@@ -19,5 +19,5 @@ Imports:
     gridExtra,
     coda
 LinkingTo: Rcpp, RcppArmadillo
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 VignetteBuilder: knitr

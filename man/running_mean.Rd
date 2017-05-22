@@ -20,4 +20,3 @@ A vector containing the recursive mean estimates.
 \description{
 Computes running mean of a vector or matrix, returning the values from each step.
 }
-

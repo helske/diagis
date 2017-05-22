@@ -25,4 +25,3 @@ x_opt <- rnorm(1000, sd = sqrt(2))
 w_opt <- dnorm(x_opt) / dnorm(x_opt, 0, sqrt(2))
 weight_plot(w_opt)
 }
-

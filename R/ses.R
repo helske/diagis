@@ -18,6 +18,11 @@ weighted_se <- function(x, w, na.rm) {
   UseMethod("weighted_se", x)
 }
 #' @export
+#' @method weighted_se ts
+weighted_se.ts <- function(x, w, na.rm = FALSE) {
+  weighted_se(x = as.numeric(x), w = w, na.rm = na.rm)
+}
+#' @export
 #' @method weighted_se mcmc
 weighted_se.mcmc <- function(x, w, na.rm = FALSE) {
   dimx <- dim(x)

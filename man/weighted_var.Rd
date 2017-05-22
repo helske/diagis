@@ -31,4 +31,3 @@ Computes a weighted variance/covariance of a vector, matrix or a three dimension
 Compared to some other R functions, here the weights are regarded as probability weights,
 not frequency weights.
 }
-

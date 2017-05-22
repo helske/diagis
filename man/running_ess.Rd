@@ -20,4 +20,3 @@ An effective sample size estimate.
 Computes and returns the running estimate of effective sample size (ESS) of 
 importance sampling estimator.
 }
-

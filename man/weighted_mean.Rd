@@ -14,7 +14,7 @@ for array the sweep is done over the third dimension.}
 \item{w}{A numeric vector of non-negative weights. Will be automatically normalised to sum to one.}
 
 \item{na.rm}{If \code{TRUE}, \code{NA} values in \code{x} (and corresponding weights in \code{w}) are
-omitted from the computation. Default is \code{FALSE}.}
+omitted from the computation. Default is \code{FALSE}. Only used in vector methods.}
 }
 \value{
 A weighted mean.
@@ -22,4 +22,3 @@ A weighted mean.
 \description{
 Computes a weighted mean of a vector, matrix, or a three dimensional array.
 }
-
