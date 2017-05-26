@@ -1,3 +1,8 @@
+diagis 0.1.3 (Release date: 2017-05-26)
+==============
+
+* Fixed a bug where some of the methods gave error due to R's automatic dimension drop.
+
 diagis 0.1.2 (Release date: 2017-05-22)
 ==============
 

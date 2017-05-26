@@ -58,7 +58,7 @@ weighted_mean.matrix<- function(x, w, na.rm = FALSE) {
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")
   } else {
-    arma_weighted_mean_vec(x[start:length(w),], w[start:length(w)])
+    arma_weighted_mean_vec(x[start:length(w), , drop = FALSE], w[start:length(w)])
   }
 }
 #' @export
@@ -71,7 +71,7 @@ weighted_mean.array<- function(x, w, na.rm = FALSE) {
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")
   }
-  arma_weighted_mean_mat(x[,,start:length(w)], w[start:length(w)])
+  arma_weighted_mean_mat(x[,,start:length(w), drop = FALSE], w[start:length(w)])
   
 }
 #' Running mean
@@ -177,5 +177,5 @@ running_weighted_mean.matrix <- function(x, w, na.rm = FALSE) {
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")
   } 
-  arma_running_weighted_mean_vec(x[start:length(w),], w[start:length(w)])
+  arma_running_weighted_mean_vec(x[start:length(w), , drop = FALSE], w[start:length(w)])
 }
