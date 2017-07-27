@@ -2,62 +2,62 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 arma_weighted_mean_mat <- function(x, w) {
-    .Call('diagis_arma_weighted_mean_mat', PACKAGE = 'diagis', x, w)
+    .Call('_diagis_arma_weighted_mean_mat', PACKAGE = 'diagis', x, w)
 }
 
 arma_weighted_var_mat <- function(x, w, ml) {
-    .Call('diagis_arma_weighted_var_mat', PACKAGE = 'diagis', x, w, ml)
+    .Call('_diagis_arma_weighted_var_mat', PACKAGE = 'diagis', x, w, ml)
 }
 
 arma_weighted_mean_vec <- function(x, w) {
-    .Call('diagis_arma_weighted_mean_vec', PACKAGE = 'diagis', x, w)
+    .Call('_diagis_arma_weighted_mean_vec', PACKAGE = 'diagis', x, w)
 }
 
 arma_running_mean_vec <- function(x) {
-    .Call('diagis_arma_running_mean_vec', PACKAGE = 'diagis', x)
+    .Call('_diagis_arma_running_mean_vec', PACKAGE = 'diagis', x)
 }
 
 arma_running_weighted_mean_vec <- function(x, w) {
-    .Call('diagis_arma_running_weighted_mean_vec', PACKAGE = 'diagis', x, w)
+    .Call('_diagis_arma_running_weighted_mean_vec', PACKAGE = 'diagis', x, w)
 }
 
 arma_weighted_var_vec <- function(x, w, ml) {
-    .Call('diagis_arma_weighted_var_vec', PACKAGE = 'diagis', x, w, ml)
+    .Call('_diagis_arma_weighted_var_vec', PACKAGE = 'diagis', x, w, ml)
 }
 
 arma_weighted_var_vec_t <- function(x, w, ml) {
-    .Call('diagis_arma_weighted_var_vec_t', PACKAGE = 'diagis', x, w, ml)
+    .Call('_diagis_arma_weighted_var_vec_t', PACKAGE = 'diagis', x, w, ml)
 }
 
 arma_weighted_se_vec <- function(x, w) {
-    .Call('diagis_arma_weighted_se_vec', PACKAGE = 'diagis', x, w)
+    .Call('_diagis_arma_weighted_se_vec', PACKAGE = 'diagis', x, w)
 }
 
 arma_weighted_mean <- function(x, w) {
-    .Call('diagis_arma_weighted_mean', PACKAGE = 'diagis', x, w)
+    .Call('_diagis_arma_weighted_mean', PACKAGE = 'diagis', x, w)
 }
 
 arma_running_mean <- function(x) {
-    .Call('diagis_arma_running_mean', PACKAGE = 'diagis', x)
+    .Call('_diagis_arma_running_mean', PACKAGE = 'diagis', x)
 }
 
 arma_running_weighted_mean <- function(x, w) {
-    .Call('diagis_arma_running_weighted_mean', PACKAGE = 'diagis', x, w)
+    .Call('_diagis_arma_running_weighted_mean', PACKAGE = 'diagis', x, w)
 }
 
 arma_weighted_var <- function(x, w, ml) {
-    .Call('diagis_arma_weighted_var', PACKAGE = 'diagis', x, w, ml)
+    .Call('_diagis_arma_weighted_var', PACKAGE = 'diagis', x, w, ml)
 }
 
 arma_running_var <- function(x, ml) {
-    .Call('diagis_arma_running_var', PACKAGE = 'diagis', x, ml)
+    .Call('_diagis_arma_running_var', PACKAGE = 'diagis', x, ml)
 }
 
 arma_running_weighted_var <- function(x, w, ml) {
-    .Call('diagis_arma_running_weighted_var', PACKAGE = 'diagis', x, w, ml)
+    .Call('_diagis_arma_running_weighted_var', PACKAGE = 'diagis', x, w, ml)
 }
 
 arma_weighted_se <- function(x, w) {
-    .Call('diagis_arma_weighted_se', PACKAGE = 'diagis', x, w)
+    .Call('_diagis_arma_weighted_se', PACKAGE = 'diagis', x, w)
 }
 

@@ -8,7 +8,7 @@ using namespace Rcpp;
 
 // arma_weighted_mean_mat
 arma::mat arma_weighted_mean_mat(const arma::cube& x, const arma::vec& w);
-RcppExport SEXP diagis_arma_weighted_mean_mat(SEXP xSEXP, SEXP wSEXP) {
+RcppExport SEXP _diagis_arma_weighted_mean_mat(SEXP xSEXP, SEXP wSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -20,7 +20,7 @@ END_RCPP
 }
 // arma_weighted_var_mat
 arma::cube arma_weighted_var_mat(const arma::cube& x, const arma::vec& w, unsigned int ml);
-RcppExport SEXP diagis_arma_weighted_var_mat(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
+RcppExport SEXP _diagis_arma_weighted_var_mat(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -33,7 +33,7 @@ END_RCPP
 }
 // arma_weighted_mean_vec
 arma::vec arma_weighted_mean_vec(const arma::mat& x, const arma::vec& w);
-RcppExport SEXP diagis_arma_weighted_mean_vec(SEXP xSEXP, SEXP wSEXP) {
+RcppExport SEXP _diagis_arma_weighted_mean_vec(SEXP xSEXP, SEXP wSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -45,7 +45,7 @@ END_RCPP
 }
 // arma_running_mean_vec
 arma::mat arma_running_mean_vec(const arma::mat& x);
-RcppExport SEXP diagis_arma_running_mean_vec(SEXP xSEXP) {
+RcppExport SEXP _diagis_arma_running_mean_vec(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -56,7 +56,7 @@ END_RCPP
 }
 // arma_running_weighted_mean_vec
 arma::mat arma_running_weighted_mean_vec(const arma::mat& x, const arma::vec& w);
-RcppExport SEXP diagis_arma_running_weighted_mean_vec(SEXP xSEXP, SEXP wSEXP) {
+RcppExport SEXP _diagis_arma_running_weighted_mean_vec(SEXP xSEXP, SEXP wSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -68,7 +68,7 @@ END_RCPP
 }
 // arma_weighted_var_vec
 arma::mat arma_weighted_var_vec(arma::mat x, const arma::vec& w, unsigned int ml);
-RcppExport SEXP diagis_arma_weighted_var_vec(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
+RcppExport SEXP _diagis_arma_weighted_var_vec(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -81,7 +81,7 @@ END_RCPP
 }
 // arma_weighted_var_vec_t
 arma::mat arma_weighted_var_vec_t(const arma::mat& x, const arma::vec& w, unsigned int ml);
-RcppExport SEXP diagis_arma_weighted_var_vec_t(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
+RcppExport SEXP _diagis_arma_weighted_var_vec_t(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -94,7 +94,7 @@ END_RCPP
 }
 // arma_weighted_se_vec
 arma::vec arma_weighted_se_vec(const arma::mat& x, const arma::vec& w);
-RcppExport SEXP diagis_arma_weighted_se_vec(SEXP xSEXP, SEXP wSEXP) {
+RcppExport SEXP _diagis_arma_weighted_se_vec(SEXP xSEXP, SEXP wSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -106,7 +106,7 @@ END_RCPP
 }
 // arma_weighted_mean
 double arma_weighted_mean(const arma::vec& x, const arma::vec& w);
-RcppExport SEXP diagis_arma_weighted_mean(SEXP xSEXP, SEXP wSEXP) {
+RcppExport SEXP _diagis_arma_weighted_mean(SEXP xSEXP, SEXP wSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -118,7 +118,7 @@ END_RCPP
 }
 // arma_running_mean
 arma::vec arma_running_mean(const arma::vec& x);
-RcppExport SEXP diagis_arma_running_mean(SEXP xSEXP) {
+RcppExport SEXP _diagis_arma_running_mean(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -129,7 +129,7 @@ END_RCPP
 }
 // arma_running_weighted_mean
 arma::vec arma_running_weighted_mean(const arma::vec& x, const arma::vec& w);
-RcppExport SEXP diagis_arma_running_weighted_mean(SEXP xSEXP, SEXP wSEXP) {
+RcppExport SEXP _diagis_arma_running_weighted_mean(SEXP xSEXP, SEXP wSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -141,7 +141,7 @@ END_RCPP
 }
 // arma_weighted_var
 double arma_weighted_var(const arma::vec& x, const arma::vec& w, unsigned int ml);
-RcppExport SEXP diagis_arma_weighted_var(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
+RcppExport SEXP _diagis_arma_weighted_var(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -154,7 +154,7 @@ END_RCPP
 }
 // arma_running_var
 arma::vec arma_running_var(const arma::vec& x, unsigned int ml);
-RcppExport SEXP diagis_arma_running_var(SEXP xSEXP, SEXP mlSEXP) {
+RcppExport SEXP _diagis_arma_running_var(SEXP xSEXP, SEXP mlSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -166,7 +166,7 @@ END_RCPP
 }
 // arma_running_weighted_var
 arma::vec arma_running_weighted_var(const arma::vec& x, const arma::vec& w, unsigned int ml);
-RcppExport SEXP diagis_arma_running_weighted_var(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
+RcppExport SEXP _diagis_arma_running_weighted_var(SEXP xSEXP, SEXP wSEXP, SEXP mlSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -179,7 +179,7 @@ END_RCPP
 }
 // arma_weighted_se
 double arma_weighted_se(const arma::vec& x, const arma::vec& w);
-RcppExport SEXP diagis_arma_weighted_se(SEXP xSEXP, SEXP wSEXP) {
+RcppExport SEXP _diagis_arma_weighted_se(SEXP xSEXP, SEXP wSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -188,4 +188,28 @@ BEGIN_RCPP
     rcpp_result_gen = Rcpp::wrap(arma_weighted_se(x, w));
     return rcpp_result_gen;
 END_RCPP
+}
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_diagis_arma_weighted_mean_mat", (DL_FUNC) &_diagis_arma_weighted_mean_mat, 2},
+    {"_diagis_arma_weighted_var_mat", (DL_FUNC) &_diagis_arma_weighted_var_mat, 3},
+    {"_diagis_arma_weighted_mean_vec", (DL_FUNC) &_diagis_arma_weighted_mean_vec, 2},
+    {"_diagis_arma_running_mean_vec", (DL_FUNC) &_diagis_arma_running_mean_vec, 1},
+    {"_diagis_arma_running_weighted_mean_vec", (DL_FUNC) &_diagis_arma_running_weighted_mean_vec, 2},
+    {"_diagis_arma_weighted_var_vec", (DL_FUNC) &_diagis_arma_weighted_var_vec, 3},
+    {"_diagis_arma_weighted_var_vec_t", (DL_FUNC) &_diagis_arma_weighted_var_vec_t, 3},
+    {"_diagis_arma_weighted_se_vec", (DL_FUNC) &_diagis_arma_weighted_se_vec, 2},
+    {"_diagis_arma_weighted_mean", (DL_FUNC) &_diagis_arma_weighted_mean, 2},
+    {"_diagis_arma_running_mean", (DL_FUNC) &_diagis_arma_running_mean, 1},
+    {"_diagis_arma_running_weighted_mean", (DL_FUNC) &_diagis_arma_running_weighted_mean, 2},
+    {"_diagis_arma_weighted_var", (DL_FUNC) &_diagis_arma_weighted_var, 3},
+    {"_diagis_arma_running_var", (DL_FUNC) &_diagis_arma_running_var, 2},
+    {"_diagis_arma_running_weighted_var", (DL_FUNC) &_diagis_arma_running_weighted_var, 3},
+    {"_diagis_arma_weighted_se", (DL_FUNC) &_diagis_arma_weighted_se, 2},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_diagis(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }
