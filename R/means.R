@@ -41,6 +41,7 @@ weighted_mean.mcmc <- function(x, w, na.rm = FALSE) {
 weighted_mean.numeric <- function(x, w, na.rm = FALSE) {
   
   if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
+  if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   start <- which(w > 0)[1]
   if (na.rm) {
     ind <- !is.na(x[start:length(w)])
@@ -54,12 +55,13 @@ weighted_mean.numeric <- function(x, w, na.rm = FALSE) {
 weighted_mean.matrix<- function(x, w, na.rm = FALSE) {
   
   if (nrow(x) != length(w)) stop("Length of 'w' is not equal to the number of rows in 'x'. ")
+  if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   start <- which(w > 0)[1]
+  
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")
-  } else {
-    arma_weighted_mean_vec(x[start:length(w), , drop = FALSE], w[start:length(w)])
-  }
+  } 
+  arma_weighted_mean_vec(x[start:length(w), , drop = FALSE], w[start:length(w)])
 }
 #' @export
 #' @method weighted_mean array
@@ -67,6 +69,8 @@ weighted_mean.array<- function(x, w, na.rm = FALSE) {
   
   if (length(dim(x)) != 3) stop("'x' must be three dimensional. ")
   if (dim(x)[3] != length(w)) stop("Length of 'w' is not equal to the third dimension of 'x'. ")
+  if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
+  
   start <- which(w > 0)[1]
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")
@@ -108,6 +112,7 @@ running_mean.mcmc <- function(x, na.rm = FALSE) {
 #' @export
 #' @method running_mean numeric
 running_mean.numeric <- function(x, na.rm = FALSE) {
+  if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   if (na.rm) {
     ind <- !is.na(x)
     arma_running_mean(x[ind])
@@ -118,6 +123,7 @@ running_mean.numeric <- function(x, na.rm = FALSE) {
 #' @export
 #' @method running_mean matrix
 running_mean.matrix <- function(x, na.rm = FALSE) {
+  if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")
   }
@@ -160,6 +166,7 @@ running_weighted_mean.mcmc <- function(x, w, na.rm = FALSE) {
 running_weighted_mean.numeric <- function(x, w, na.rm = FALSE) {
   
   if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
+  if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   start <- which(w > 0)[1]
   if (na.rm) {
     ind <- !is.na(x[start:length(w)])
@@ -173,6 +180,7 @@ running_weighted_mean.numeric <- function(x, w, na.rm = FALSE) {
 running_weighted_mean.matrix <- function(x, w, na.rm = FALSE) {
   
   if (nrow(x) != length(w)) stop("Length of 'w' is not equal to the number of rows in 'x'. ")
+  if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   start <- which(w > 0)[1]
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")

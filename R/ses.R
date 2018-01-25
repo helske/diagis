@@ -41,7 +41,7 @@ weighted_se.mcmc <- function(x, w, na.rm = FALSE) {
 weighted_se.numeric <- function(x, w, na.rm = FALSE) {
   
   if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
-  
+  if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   if (na.rm) {
     ind <- !is.na(x)
     arma_weighted_se(x[ind], w[ind])
@@ -55,7 +55,7 @@ weighted_se.numeric <- function(x, w, na.rm = FALSE) {
 weighted_se.matrix <- function(x, w, na.rm = FALSE) {
   
  if (nrow(x) != length(w)) stop("Length of 'w' is not equal to the number of rows in 'x'. ")
-  
+  if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")
     arma_weighted_se_vec(x, w)

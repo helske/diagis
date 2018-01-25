@@ -47,7 +47,7 @@ weighted_var.mcmc <- function(x, w, method = c("moment", "unbiased"), na.rm = FA
 weighted_var.numeric <- function(x, w, method = c("moment", "unbiased"), na.rm = FALSE) {
   
   if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
-  
+  if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   method <- pmatch(match.arg(method), c("moment", "unbiased")) - 1L
   
   if (na.rm) {
@@ -62,7 +62,7 @@ weighted_var.numeric <- function(x, w, method = c("moment", "unbiased"), na.rm =
 weighted_var.matrix <- function(x, w, method = c("moment", "unbiased"), na.rm = FALSE) {
   
   if (nrow(x) != length(w)) stop("Length of 'w' is not equal to the number of rows in 'x'. ")
-  
+  if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   method <- pmatch(match.arg(method), c("moment", "unbiased")) - 1L
   
   if (na.rm) {
@@ -78,7 +78,7 @@ weighted_var.array <- function(x, w, method = c("moment", "unbiased"), na.rm = F
   
   if (length(dim(x)) != 3) stop("'x' must be three dimensional. ")
   if (dim(x)[3] != length(w)) stop("Length of 'w' is not equal to the third dimension of 'x'. ")
-  
+  if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   method <- pmatch(match.arg(method), c("moment", "unbiased")) - 1L
   
   if (na.rm) {
@@ -101,6 +101,7 @@ weighted_var.array <- function(x, w, method = c("moment", "unbiased"), na.rm = F
 running_var <- function(x, method = c("moment", "unbiased"), na.rm = FALSE) {
   
   method <- pmatch(match.arg(method), c("moment", "unbiased")) - 1L
+  if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   if (na.rm) {
     ind <- !is.na(x)
     arma_running_var(x[ind], method)
@@ -119,7 +120,7 @@ running_var <- function(x, method = c("moment", "unbiased"), na.rm = FALSE) {
 running_weighted_var <- function(x, w, method = c("moment", "unbiased"), na.rm = FALSE) {
   
   if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
-  
+  if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   method <- pmatch(match.arg(method), c("moment", "unbiased")) - 1L
   start <- which(w > 0)[1]
   if (na.rm) {
