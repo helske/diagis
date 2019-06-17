@@ -6,7 +6,7 @@
 #' 
 #' @importFrom ggplot2 ggplot geom_point geom_line ggtitle scale_y_continuous aes aes_
 #' @importFrom gridExtra grid.arrange
-#' @param w Vector of weights
+#' @param w Vector of weights.
 #' @export
 #' @examples
 #' #' importance sampling from too narrow distribution
@@ -28,10 +28,10 @@ weight_plot <- function(w){
     ggtitle(paste0(min(100, length(w)), " largest weights"))
   index <- seq_along(w)
   p2 <- ggplot(mapping = aes(x = index, y = sort(w))) + geom_point() + 
-    scale_y_continuous("variance") + 
+    scale_y_continuous("value") + 
     ggtitle("sorted weights")
   p3 <- ggplot(mapping = aes(x = index, y = running_var(w))) + geom_line() + 
-    scale_y_continuous("value") + ggtitle("running variance of weights")
+    scale_y_continuous("variance") + ggtitle("running variance of weights")
   p4 <- ggplot(mapping = aes(x = index, y = running_ess(w))) + geom_line() + 
     scale_y_continuous("value") + ggtitle("running ESS")
   grid.arrange(p1, p2, p3, p4, ncol=2)
