@@ -7,7 +7,7 @@
 weight_plot(w)
 }
 \arguments{
-\item{w}{Vector of weights}
+\item{w}{Vector of weights.}
 }
 \description{
 Function \code{weight_plot} plots four figures given the weight vector \code{w}: 

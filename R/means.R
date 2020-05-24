@@ -45,6 +45,7 @@ weighted_mean.numeric <- function(x, w, na.rm = FALSE) {
   start <- which(w > 0)[1]
   if (na.rm) {
     ind <- !is.na(x[start:length(w)])
+    if(length(ind) == length(x[start:length(w)])) return(NA)
     arma_weighted_mean(x[start:length(w)][ind], w[start:length(w)][ind])
   } else {
     arma_weighted_mean(x[start:length(w)], w[start:length(w)])
@@ -115,6 +116,7 @@ running_mean.numeric <- function(x, na.rm = FALSE) {
   if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   if (na.rm) {
     ind <- !is.na(x)
+    if(length(ind) == length(x)) return(NA)
     arma_running_mean(x[ind])
   } else {
     arma_running_mean(x)
@@ -170,6 +172,7 @@ running_weighted_mean.numeric <- function(x, w, na.rm = FALSE) {
   start <- which(w > 0)[1]
   if (na.rm) {
     ind <- !is.na(x[start:length(w)])
+    if(length(ind) == length(x[start:length(w)])) return(NA)
     arma_running_weighted_mean(x[start:length(w)][ind], w[start:length(w)][ind])
   } else {
     arma_running_weighted_mean(x[start:length(w)], w[start:length(w)])

@@ -1,3 +1,8 @@
+diagis 0.1.4 (Release date: 2020-05-24)
+==============
+
+* Return NA for all NA samples instead of occasional zero (e.g. weighted_se).
+
 diagis 0.1.3-1 (Release date: 2018-01-25)
 ==============
 

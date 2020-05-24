@@ -52,6 +52,7 @@ weighted_var.numeric <- function(x, w, method = c("moment", "unbiased"), na.rm =
   
   if (na.rm) {
     ind <- !is.na(x)
+    if(length(ind) == length(x)) return(NA)
     arma_weighted_var(x[ind], w[ind], method)
   } else {
     arma_weighted_var(x, w, method)
@@ -104,6 +105,7 @@ running_var <- function(x, method = c("moment", "unbiased"), na.rm = FALSE) {
   if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   if (na.rm) {
     ind <- !is.na(x)
+    if(length(ind) == length(x)) return(NA)
     arma_running_var(x[ind], method)
   } else {
     arma_running_var(x, method)
@@ -125,6 +127,7 @@ running_weighted_var <- function(x, w, method = c("moment", "unbiased"), na.rm =
   start <- which(w > 0)[1]
   if (na.rm) {
     ind <- !is.na(x)
+    if(length(ind) == length(x[start:length(w)])) return(NA)
     arma_running_weighted_var(x[start:length(x)][ind], w[start:length(x)][ind], method)
   } else {
     arma_running_weighted_var(x[start:length(x)], w[start:length(x)], method)
