@@ -43,8 +43,8 @@ weighted_se.numeric <- function(x, w, na.rm = FALSE) {
   if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
   if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   if (na.rm) {
-    ind <- !is.na(x)
-    if(length(ind) == length(x)) return(NA)
+    ind <- which(!is.na(x))
+    if(length(ind) == 0) return(NA)
     arma_weighted_se(x[ind], w[ind])
   } else {
     arma_weighted_se(x, w)
