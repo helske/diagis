@@ -75,6 +75,11 @@ weighted_quantile.matrix <- function(x, w, probs = probs, na.rm = FALSE) {
 #' @export
 weighted_quantile.default <- function(x, w, probs) {
   
+  if (anyDuplicated(x) > 0) {
+    combined <- aggregate(w ~ x, FUN = sum)
+    x <- combined$x
+    w <- combined$w
+  }
   ord <- order(x)
   x <- x[ord]
   w <- cumsum(w[ord])
