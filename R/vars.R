@@ -26,7 +26,7 @@ weighted_var <- function(x, w, method, na.rm) {
 #' @export
 #' @method weighted_var ts
 weighted_var.ts <- function(x, w, method = c("moment", "unbiased"), na.rm = FALSE) {
-  weighted_var(x = as.numeric(x), w = w, method = method, na.rm = na.rm)
+  weighted_var(x = unclass(x), w = w, method = method, na.rm = na.rm)
 }
 #' @export
 #' @method weighted_var mcmc

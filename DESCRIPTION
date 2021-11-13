@@ -1,16 +1,17 @@
 Package: diagis
 Type: Package
 Title: Diagnostic Plot and Multivariate Summary Statistics of Weighted Samples from Importance Sampling
-Version: 0.1.5
-Date: 2020-06-04
+Version: 0.2.0
+Date: 2021-11-15
 Authors@R: 
     person(given = "Jouni",
            family = "Helske",
            role = c("aut", "cre"),
            email = "jouni.helske@iki.fi",
            comment = c(ORCID = "0000-0001-7130-793X"))
-Description: Fast functions for effective sample size, weighted multivariate mean and variance computation, 
-    and weight diagnostic plot for generic importance sampling type results.
+Description: Fast functions for effective sample size, weighted multivariate 
+    mean, variance, and quantile computation, and weight diagnostic plot for 
+    generic importance sampling type or other probability weighted samples.
 License: GPL (>= 2)
 BugReports: https://github.com/helske/diagis/issues
 Suggests: 
@@ -23,7 +24,6 @@ Imports:
     gridExtra,
     coda
 LinkingTo: Rcpp, RcppArmadillo
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 Encoding: UTF-8
-

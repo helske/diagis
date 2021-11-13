@@ -1,7 +1,7 @@
 ---
 title: "diagis: Diagnostic plot and multivariate summary statistics of weighted samples from importance sampling"
 author: "Jouni Helske"
-date: "October 27, 2016"
+date: "November 15, 2021"
 link-citations: true
 output: 
   pdf_document:
@@ -22,7 +22,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-`diagis` is an R package containing functions relating weighted samples obtained for example from importance sampling. The main motivation for developing `diagis` was to enable easy computation of summary statistics and diagnostics of the weighted MCMC runs provided by `bssm` package [@helske-vihola; @vihola-helske-franks] for Bayesian state space modelling. For more broader use, the `diagis` package provides functions for computing weighted means and covariances of possibly multivariate samples, the running versions of these, as well as diagnostic plot function `weight_plot` for graphical diagnostic of weights.
+`diagis` is an R package containing functions relating weighted samples obtained for example from importance sampling. The main motivation for developing `diagis` was to enable easy computation of summary statistics and diagnostics of the weighted IS-MCMC runs provided by `bssm` package [@helske-vihola; @vihola-helske-franks] for Bayesian state space modelling. For more broader use, the `diagis` package provides functions for computing weighted means and covariances of possibly multivariate samples, the running versions of these, as well as diagnostic plot function `weight_plot` for graphical diagnostic of weights.
 
 All the mean and covariance functions are written in C++ using `Rcpp` [@eddelbuettel-francois; @eddelbuettel] and `RcppArmadillo` [@eddelbuettel-sanderson] packages, making these function computationally very efficient even for large samples. The weight diagnostic plot uses `ggplot` [@wickham] for visually appealing graphics, while `gridExtra` [@auguie] combines the plots together.
 
@@ -83,5 +83,14 @@ Now let's use `weight_plot` function for our bad IS run:
 weight_plot(w_bad)
 ```
 Oops! The figures are pretty self-explanatory, the running statistics look fine at first, but when the we take that one huge weight into account, the variance explodes and at the same time ESS drops signigicantly as that one $(x_i, w_i)$ pair dominates the sums in ESS.
+
+## Weighted quantiles
+
+The `diagis` package also contains function `weighted_quantile` for computing weighted quantiles (or perhaps more precisely percentiles, but we call them quantiles as ìn `quantile` method in base R). As for non-weighted quantiles, there are several ways to compute weighted quantiles, and the one used in `diagis` is based on the following method. Let $x_1,\ldots,x_n$ be an ordered (increasing) vector, $w_1,\ldots,w_n$ the corresponding weights with $\sum_{i=1}^n w_i=1$, and $p$ the target probability for which we want to find the corresponding quantile $q$. Now let $w'_j=\sum_{i=1}^jw_i$ be the cumulative sum of weights from $1$ to $j$, and find index $k$ so that $w_{k-1} < p$ and $w_k \geq p$. Then   
+
+$$
+q = x_{k-1} + (x_k - x_{k-1})\frac{p - w_{k-1}}{w_{k} - w_{k-1}}.
+$$
+In case where $x$ can contain several identical values, these elements should be combined (and corresponding weights added together), but for a typical setting where variables $x$ are samples from a continuous distribution, the probability of this zero. Also, for the weighted posterior samples from the IS-MCMC as implemented in `bssm`, identical values due to rejections in MCMC are automatically combined in the jump chain representation [@helske-vihola].
 
 # References

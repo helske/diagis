@@ -19,7 +19,7 @@ weighted_mean <- function(x, w, na.rm) {
 #' @export
 #' @method weighted_mean ts
 weighted_mean.ts <- function(x, w, na.rm = FALSE) {
-  weighted_mean(x = as.numeric(x), w = w, na.rm = na.rm)
+  weighted_mean(x = unclass(x), w = w, na.rm = na.rm)
 }
 #' @export
 #' @method weighted_mean mcmc
@@ -94,7 +94,7 @@ running_mean <- function(x, na.rm) {
 #' @export
 #' @method running_mean ts
 running_mean.ts <- function(x, na.rm = FALSE) {
-  running_mean(x = as.numeric(x), na.rm = na.rm)
+  running_mean(x = unclass(x), na.rm = na.rm)
 }
 #' @export
 #' @method running_mean mcmc
@@ -147,7 +147,7 @@ running_weighted_mean <- function(x, w, na.rm) {
 #' @export
 #' @method running_weighted_mean ts
 running_weighted_mean.ts <- function(x, w, na.rm = FALSE) {
-  running_weighted_mean(x = as.numeric(x), w = w, na.rm = na.rm)
+  running_weighted_mean(x = unclass(x), w = w, na.rm = na.rm)
 }
 #' @export
 #' @method running_weighted_mean mcmc

@@ -7,7 +7,8 @@
 weighted_se(x, w, na.rm)
 }
 \arguments{
-\item{x}{A numeric vector or matrix.}
+\item{x}{A numeric vector or matrix. For matrix, standard errors are 
+computed for each column}
 
 \item{w}{A numeric vector of non-negative weights. Will be automatically normalised to sum to one.}
 

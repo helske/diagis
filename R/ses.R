@@ -6,7 +6,8 @@
 #' not frequency weights.
 #' 
 #' @export
-#' @param x A numeric vector or matrix.
+#' @param x A numeric vector or matrix. For matrix, standard errors are 
+#' computed for each column
 #' @param w A numeric vector of non-negative weights. Will be automatically normalised to sum to one.
 #' @param na.rm If \code{TRUE}, \code{NA} values in \code{x} (and corresponding weights in \code{w}) are
 #' omitted from the computation. Default is \code{FALSE}.
