@@ -75,15 +75,17 @@ weighted_quantile.matrix <- function(x, w, probs = probs, na.rm = FALSE) {
 #' @export
 weighted_quantile.default <- function(x, w, probs) {
   
-  if (anyDuplicated(x) > 0) {
-    combined <- aggregate(w ~ x, FUN = sum)
-    x <- combined$x
-    w <- combined$w
+  if (any(dups <- duplicated(x))) {
+    w <- cumsum(tapply(w, x, sum))
+    w <- w / w[length(w)]
+    x <- sort(x[!dups])
+    
+  } else {
+    ord <- order(x)
+    x <- x[ord]
+    w <- cumsum(w[ord])
+    w <- w / w[length(w)]
   }
-  ord <- order(x)
-  x <- x[ord]
-  w <- cumsum(w[ord])
-  w <- w / w[length(w)]
   out <- numeric(length(probs))
   for (i in seq_along(probs)) {
     k <- which(w >= probs[i])[1]
