@@ -15,8 +15,10 @@ normalised to sum to one.}
 
 \item{probs}{A numeric vector of probabilities with values between 0 and 1.}
 
-\item{na.rm}{If \code{TRUE}, \code{NA} values in \code{x} (and corresponding
-weights in \code{w}) are omitted from the computation. Default is \code{FALSE}.}
+\item{na.rm}{If \code{TRUE}, \code{NA} and \code{NaN} values in \code{x} 
+(and corresponding weights in \code{w}) are omitted from the computation. 
+Default is \code{FALSE}. Additional missing values in \code{w} are not 
+allowed.}
 }
 \value{
 A weighted variance.

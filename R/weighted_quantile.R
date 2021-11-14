@@ -13,67 +13,66 @@
 #' @param w A numeric vector of non-negative weights. Will be automatically 
 #' normalised to sum to one.
 #' @param probs A numeric vector of probabilities with values between 0 and 1.
-#' @param na.rm If \code{TRUE}, \code{NA} values in \code{x} (and corresponding
-#' weights in \code{w}) are omitted from the computation. Default is \code{FALSE}.
+#' @param na.rm If \code{TRUE}, \code{NA} and \code{NaN} values in \code{x} 
+#' (and corresponding weights in \code{w}) are omitted from the computation. 
+#' Default is \code{FALSE}. Additional missing values in \code{w} are not 
+#' allowed.
 #' @return A weighted variance.
 weighted_quantile <- function(x, w, probs = probs, na.rm) {
-  if (!(typeof(w) %in% c("integer", "double"))) {
-    stop("Argument 'w' must be of type 'integer' or 'double'. ")
-  }
   UseMethod("weighted_quantile", x)
 }
 #' @export
 #' @method weighted_quantile ts
-weighted_quantile.ts <- function(x, w, probs = probs, na.rm = FALSE) {
-  weighted_quantile(x = unclass(x), w = w, na.rm = na.rm)
+weighted_quantile.ts <- function(x, w, probs, na.rm = FALSE) {
+  weighted_quantile(unclass(x), w, probs, na.rm)
 }
 #' @export
 #' @method weighted_quantile mcmc
-weighted_quantile.mcmc <- function(x, w, probs = probs, na.rm = FALSE) {
+weighted_quantile.mcmc <- function(x, w, probs, na.rm = FALSE) {
   dimx <- dim(x)
   if (is.null(dimx)) {
-    weighted_quantile.numeric(x, w, probs = probs, na.rm)
+    weighted_quantile.numeric(x, w, probs, na.rm)
   } else {
     if (length(dimx) == 2) {
-      weighted_quantile.matrix(x, w, probs = probs, na.rm)
+      weighted_quantile.matrix(x, w, probs, na.rm)
     } else {
-      weighted_quantile(x, w, probs = probs, na.rm)
+      weighted_quantile.numeric(x, w, probs, na.rm)
     }
-  }
-}
-#' @export
-#' @method weighted_quantile numeric
-weighted_quantile.numeric <- function(x, w, probs = probs, na.rm = FALSE) {
-  
-  if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
-  if (length(na.rm) > 1 || !is.logical(na.rm)) 
-    stop("Argument 'na.rm' should be a logical of length one.")
-  if (na.rm) {
-    ind <- which(!is.na(x))
-    if(length(ind) == 0) return(NA)
-    weighted_quantile.default(x[ind], w[ind], probs = probs)
-  } else {
-    weighted_quantile.default(x, w, probs = probs)
   }
 }
 
 #' @export
 #' @method weighted_quantile matrix
-weighted_quantile.matrix <- function(x, w, probs = probs, na.rm = FALSE) {
-  
+weighted_quantile.matrix <- function(x, w, probs, na.rm = FALSE) {
   if (nrow(x) != length(w)) 
     stop("Length of 'w' is not equal to the number of rows in 'x'. ")
+  apply(x, 2, weighted_quantile.numeric, w = w, probs = probs, na.rm = na.rm)
+}
+
+#' @export
+#' @method weighted_quantile numeric
+weighted_quantile.numeric <- function(x, w, probs, na.rm = FALSE) {
+  
+  if (!(typeof(w) %in% c("integer", "double"))) {
+    stop("Argument 'w' must be of type 'integer' or 'double'. ")
+  }
+  if (any(!is.finite(probs))) 
+    stop("Nonfinite values in 'probs'. ")
+  if (any(probs < 0 | probs > 1)) 
+    stop("'probs' outside [0, 1].")
   if (length(na.rm) > 1 || !is.logical(na.rm)) 
     stop("Argument 'na.rm' should be a logical of length one.")
-  if (na.rm) {
-    warning("Argument 'na.rm' ignored. ")
-    apply(x, 2, weighted_quantile.default, w = w, probs = probs)
-  } else {
-    apply(x, 2, weighted_quantile.default, w = w, probs = probs)
+  
+  if (any(nas <- is.na(x))) {
+    if (na.rm) {
+      x <- x[!nas]
+      w <- w[!nas]
+    } else {
+      stop("Missing values or NaN in 'x' not allowed as 'na.rm' is FALSE.")
+    }
   }
-}
-#' @export
-weighted_quantile.default <- function(x, w, probs) {
+  if (anyNA(w))
+    stop("Missing values or NaNs in 'w' not allowed.")
   
   if (any(dups <- duplicated(x))) {
     w <- cumsum(tapply(w, x, sum))
@@ -96,5 +95,8 @@ weighted_quantile.default <- function(x, w, probs) {
         (x[k] - x[k - 1]) * (probs[i] - w[k - 1]) / (w[k] - w[k - 1])
     }
   }
+  names(out) <- paste0(formatC(probs * 100, format = "fg"), "%")
   out
 }
+
+
