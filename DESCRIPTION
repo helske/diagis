@@ -2,7 +2,6 @@ Package: diagis
 Type: Package
 Title: Diagnostic Plot and Multivariate Summary Statistics of Weighted Samples from Importance Sampling
 Version: 0.2.0
-Date: 2021-11-15
 Authors@R: 
     person(given = "Jouni",
            family = "Helske",
@@ -14,15 +13,17 @@ Description: Fast functions for effective sample size, weighted multivariate
     generic importance sampling type or other probability weighted samples.
 License: GPL (>= 2)
 BugReports: https://github.com/helske/diagis/issues
+URL: https://github.com/helske/diagis/
 Suggests: 
-    testthat,
+    covr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat,
 Imports:
-    Rcpp (>= 0.12.7),
+    coda,
     ggplot2 (>= 2.1.0),
     gridExtra,
-    coda
+    Rcpp (>= 0.12.7)
 LinkingTo: Rcpp, RcppArmadillo
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr

@@ -3,12 +3,7 @@ title: "diagis: Diagnostic plot and multivariate summary statistics of weighted 
 author: "Jouni Helske"
 date: "November 15, 2021"
 link-citations: true
-output: 
-  pdf_document:
-    fig_caption: yes
-    fig_crop: no
-    fig_height: 6
-    fig_width: 8
+output: html_document
 bibliography: diagis.bib
 vignette: |
   %\VignetteIndexEntry{Auxiliary functions for importance sampling}
@@ -22,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-`diagis` is an R package containing functions relating weighted samples obtained for example from importance sampling. The main motivation for developing `diagis` was to enable easy computation of summary statistics and diagnostics of the weighted IS-MCMC runs provided by `bssm` package [@helske-vihola; @vihola-helske-franks] for Bayesian state space modelling. For more broader use, the `diagis` package provides functions for computing weighted means and covariances of possibly multivariate samples, the running versions of these, as well as diagnostic plot function `weight_plot` for graphical diagnostic of weights.
+`diagis` is an R package containing functions relating weighted samples obtained for example from importance sampling. The main motivation for developing `diagis` was to enable easy computation of summary statistics and diagnostics of the weighted IS-MCMC runs provided by `bssm` package [@helske-vihola; @vihola-helske-franks] for Bayesian state space modelling. For more broader use, the `diagis` package provides functions for computing (probability) weighted means, covariances, and quantiles of possibly multivariate samples, the running versions of these, as well as diagnostic plot function `weight_plot` for graphical diagnostic of weights.
 
 All the mean and covariance functions are written in C++ using `Rcpp` [@eddelbuettel-francois; @eddelbuettel] and `RcppArmadillo` [@eddelbuettel-sanderson] packages, making these function computationally very efficient even for large samples. The weight diagnostic plot uses `ggplot` [@wickham] for visually appealing graphics, while `gridExtra` [@auguie] combines the plots together.
 
