@@ -1,5 +1,5 @@
 [![R-CMD-check](https://github.com/helske/diagis/workflows/R-CMD-check/badge.svg)](https://github.com/helske/diagis/actions)
-[![codecov.io](http://codecov.io/github/helske/diagis/coverage.svg?branch=master)](http://codecov.io/github/helske/diagis?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/helske/diagis/branch/master/graph/badge.svg)](https://codecov.io/gh/helske/diagis?branch=master)
 [![downloads](http://cranlogs.r-pkg.org/badges/diagis)](http://cranlogs.r-pkg.org/badges/diagis)
 [![cran version](http://www.r-pkg.org/badges/version/diagis)](http://cran.r-project.org/package=diagis)
 
