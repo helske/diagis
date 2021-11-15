@@ -76,15 +76,15 @@ The function `weight_plot` draws four figures. The first one shows 100 largest w
 $$
 ESS_n = \frac{(\sum_{i=1}^n w_i)^2}{\sum_{i=1}^n w^2_i} = \frac{1}{\sum_{i=1}^n \bar w^2_i},
 $$
-where $\bar w_i = w_i / \sum_{i=1}^n w_i$. The intepretation of ESS is that our importance sampling corresponds to the case with direct simulation from the target distribution $p(x)$ using ESS samples (i.e. larger the ESS is better). Other measures of efficiency are also available in literature, and they might be added to `diagis` in future.
+where $\bar w_i = w_i / \sum_{i=1}^n w_i$. The interpretation of ESS is that our importance sampling corresponds to the case with direct simulation from the target distribution $p(x)$ using ESS samples (i.e. larger the ESS is better). Other measures of efficiency are also available in literature, and they might be added to `diagis` in future.
 
 Now let's use `weight_plot` function for our bad IS run:
 ```{r weight_plot_bad}
 weight_plot(w_bad)
 ```
-Oops! The figures are pretty self-explanatory, the running statistics look fine at first, but when the we take that one huge weight into account, the variance explodes and at the same time ESS drops signigicantly as that one $(x_i, w_i)$ pair dominates the sums in ESS.
+Oops! The figures are pretty self-explanatory, the running statistics look fine at first, but when the we take that one huge weight into account, the variance explodes and at the same time ESS drops significantly as that one $(x_i, w_i)$ pair dominates the sums in ESS.
 
-## Weighted quantiles
+# Weighted quantiles
 
 The `diagis` package also contains function `weighted_quantile` for computing weighted quantiles (or perhaps more precisely percentiles, but we call them quantiles as ìn `quantile` method in base R). As for non-weighted quantiles, there are several ways to compute weighted quantiles, and the one used in `diagis` is based on the following linear interpolation of the weighted empirical CDF (in nonweighted case, this corresponds to type 4 quantile in `quantile`). Let $x_1,\ldots,x_n$ be an ordered (increasing) vector, $w_1,\ldots,w_n$ the corresponding weights with $\sum_{i=1}^n w_i=1$, and $p$ the target probability for which we want to find the corresponding quantile $q$. Now let $w'_j=\sum_{i=1}^jw_i$ be the cumulative sum of weights from $1$ to $j$, and find index $k$ so that $w_{k-1} < p$ and $w_k \geq p$. Then   
 
