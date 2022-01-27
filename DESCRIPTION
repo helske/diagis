@@ -1,7 +1,7 @@
 Package: diagis
 Type: Package
 Title: Diagnostic Plot and Multivariate Summary Statistics of Weighted Samples from Importance Sampling
-Version: 0.2.0
+Version: 0.2.2
 Authors@R: 
     person(given = "Jouni",
            family = "Helske",

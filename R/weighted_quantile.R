@@ -56,6 +56,10 @@ weighted_quantile.numeric <- function(x, w, probs, na.rm = FALSE) {
   if (!(typeof(w) %in% c("integer", "double"))) {
     stop("Argument 'w' must be of type 'integer' or 'double'. ")
   }
+  if (!is.numeric(w) || any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  if (!any(w > 0)) {
+    stop("No positive weights in 'w'.")
+  }
   if (any(!is.finite(probs))) 
     stop("Nonfinite values in 'probs'. ")
   if (any(probs < 0 | probs > 1)) 

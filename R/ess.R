@@ -9,7 +9,10 @@
 #' @return An effective sample size estimate.
 ess <- function(w, f, x){
   
-  if (any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  if (!is.numeric(w) || any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  if (!any(w > 0)) {
+    stop("No positive weights in 'w'.")
+  }
   if (missing(f) || missing(x)) {
     1 / sum((w / sum(w)) ^ 2)
   } else {
@@ -37,7 +40,9 @@ ess <- function(w, f, x){
 running_ess <- function(w, f, x){
   
   if (!is.numeric(w) || any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
-  
+  if (!any(w > 0)) {
+    stop("No positive weights in 'w'.")
+  }
   if (missing(f) || missing(x)) {
     
     csw <- cumsum(w)

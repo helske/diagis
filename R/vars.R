@@ -49,7 +49,10 @@ weighted_var.numeric <- function(x, w, method = c("moment", "unbiased"), na.rm =
   if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
   if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   method <- pmatch(match.arg(method), c("moment", "unbiased")) - 1L
-  
+  if (!is.numeric(w) || any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  if (!any(w > 0)) {
+    stop("No positive weights in 'w'.")
+  }
   if (na.rm) {
     ind <- which(!is.na(x))
     if(length(ind) == 0) return(NA)
@@ -65,7 +68,10 @@ weighted_var.matrix <- function(x, w, method = c("moment", "unbiased"), na.rm = 
   if (nrow(x) != length(w)) stop("Length of 'w' is not equal to the number of rows in 'x'. ")
   if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   method <- pmatch(match.arg(method), c("moment", "unbiased")) - 1L
-  
+  if (!is.numeric(w) || any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  if (!any(w > 0)) {
+    stop("No positive weights in 'w'.")
+  }
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")
     arma_weighted_var_vec(x, w, method)
@@ -81,7 +87,10 @@ weighted_var.array <- function(x, w, method = c("moment", "unbiased"), na.rm = F
   if (dim(x)[3] != length(w)) stop("Length of 'w' is not equal to the third dimension of 'x'. ")
   if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   method <- pmatch(match.arg(method), c("moment", "unbiased")) - 1L
-  
+  if (!is.numeric(w) || any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  if (!any(w > 0)) {
+    stop("No positive weights in 'w'.")
+  }
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")
     arma_weighted_var_mat(x, w, method)
@@ -124,6 +133,10 @@ running_weighted_var <- function(x, w, method = c("moment", "unbiased"), na.rm =
   if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
   if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
   method <- pmatch(match.arg(method), c("moment", "unbiased")) - 1L
+  if (!is.numeric(w) || any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  if (!any(w > 0)) {
+    stop("No positive weights in 'w'.")
+  }
   start <- which(w > 0)[1]
   if (na.rm) {
     ind <- which(!is.na(x))

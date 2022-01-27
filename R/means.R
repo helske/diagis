@@ -14,6 +14,7 @@ weighted_mean <- function(x, w, na.rm) {
   if (!(typeof(w) %in% c("integer", "double"))) {
     stop("Argument 'w' must be of type 'integer' or 'double'. ")
   }
+  
   UseMethod("weighted_mean", x)
 }
 #' @export
@@ -42,7 +43,12 @@ weighted_mean.numeric <- function(x, w, na.rm = FALSE) {
   
   if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
   if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
+  if (!is.numeric(w) || any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  if (!any(w > 0)) {
+    stop("No positive weights in 'w'.")
+  }
   start <- which(w > 0)[1]
+  
   if (na.rm) {
     ind <- which(!is.na(x[start:length(w)]))
     if(length(ind) == 0) return(NA)
@@ -57,8 +63,12 @@ weighted_mean.matrix<- function(x, w, na.rm = FALSE) {
   
   if (nrow(x) != length(w)) stop("Length of 'w' is not equal to the number of rows in 'x'. ")
   if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
+  if (!is.numeric(w) || any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  if (!any(w > 0)) {
+    stop("No positive weights in 'w'.")
+  }
   start <- which(w > 0)[1]
-  
+
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")
   } 
@@ -71,8 +81,12 @@ weighted_mean.array<- function(x, w, na.rm = FALSE) {
   if (length(dim(x)) != 3) stop("'x' must be three dimensional. ")
   if (dim(x)[3] != length(w)) stop("Length of 'w' is not equal to the third dimension of 'x'. ")
   if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
-  
+  if (!is.numeric(w) || any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  if (!any(w > 0)) {
+    stop("No positive weights in 'w'.")
+  }  
   start <- which(w > 0)[1]
+
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")
   }
@@ -169,7 +183,12 @@ running_weighted_mean.numeric <- function(x, w, na.rm = FALSE) {
   
   if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
   if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
+  if (!is.numeric(w) || any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  if (!any(w > 0)) {
+    stop("No positive weights in 'w'.")
+  }
   start <- which(w > 0)[1]
+
   if (na.rm) {
     ind <- which(!is.na(x[start:length(w)]))
     if(length(ind) == 0) return(NA)
@@ -184,6 +203,11 @@ running_weighted_mean.matrix <- function(x, w, na.rm = FALSE) {
   
   if (nrow(x) != length(w)) stop("Length of 'w' is not equal to the number of rows in 'x'. ")
   if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
+  if (!is.numeric(w) || any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  if (!any(w > 0)) {
+    stop("No positive weights in 'w'.")
+  }
+  
   start <- which(w > 0)[1]
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")

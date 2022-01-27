@@ -43,6 +43,10 @@ weighted_se.numeric <- function(x, w, na.rm = FALSE) {
   
   if (length(x) != length(w)) stop("'x' and 'w' have unequal lengths. ")
   if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
+  if (!is.numeric(w) || any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  if (!any(w > 0)) {
+    stop("No positive weights in 'w'.")
+  }
   if (na.rm) {
     ind <- which(!is.na(x))
     if(length(ind) == 0) return(NA)
@@ -58,6 +62,10 @@ weighted_se.matrix <- function(x, w, na.rm = FALSE) {
   
  if (nrow(x) != length(w)) stop("Length of 'w' is not equal to the number of rows in 'x'. ")
   if (length(na.rm) > 1 || !is.logical(na.rm)) stop("Argument 'na.rm' should be a logical of length one.")
+  if (!is.numeric(w) || any(w < 0)) stop ("Weight vector 'w' must contain only non-negative values. ")
+  if (!any(w > 0)) {
+    stop("No positive weights in 'w'.")
+  }
   if (na.rm) {
     warning("Argument 'na.rm' ignored. ")
     arma_weighted_se_vec(x, w)
