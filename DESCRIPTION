@@ -1,7 +1,7 @@
 Package: diagis
 Type: Package
 Title: Diagnostic Plot and Multivariate Summary Statistics of Weighted Samples from Importance Sampling
-Version: 0.2.2
+Version: 0.2.3
 Authors@R: 
     person(given = "Jouni",
            family = "Helske",
@@ -25,6 +25,6 @@ Imports:
     gridExtra,
     Rcpp (>= 0.12.7)
 LinkingTo: Rcpp, RcppArmadillo
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 Encoding: UTF-8

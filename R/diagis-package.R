@@ -5,7 +5,7 @@
 #' 
 #' @docType package
 #' @name diagis
-#' @aliases diagis
+#' @aliases diagis diagis-package
 #' @importFrom coda mcmc
 #' @importFrom stats ts
 #' @importFrom Rcpp evalCpp

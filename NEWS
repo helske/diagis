@@ -1,3 +1,7 @@
+diagis 0.2.3 (Release date: 2023-09-04)
+==============
+* Added explicit alias for diagis-package due to changes in roxygen2.
+
 diagis 0.2.2 (Release date: 2021-11-30)
 ==============
 * All functions now check that weights are non-negative and numeric, and that 
